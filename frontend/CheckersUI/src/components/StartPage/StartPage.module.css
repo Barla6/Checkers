@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+.start-page {
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.start-page .header {
+    background-color: #6f8a9d;
+    width: 100%;
+    flex: 2;
+}
+
+.start-page .bottom-div {
+    width: 100%;
+    flex: 1;
+}
+
+.start-page .bottom-div Button {
+    width: fit-content;
+    height: fit-content;
+    margin-top: 8vh;
+    background-color: #6f8a9d;
+    font-size: 6vh;
+    color: black;
+    font-weight: 600;
+    font-family: "Nunito", sans-serif;
+}

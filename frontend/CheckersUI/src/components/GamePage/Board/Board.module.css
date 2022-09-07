@@ -1,0 +1,13 @@
+.board {
+    background-color: #5f778b;
+    width: fit-content;
+    height: fit-content;
+    padding: 5vh;
+    border-radius: 1rem;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-top: 5vh;
+}
+
+.board-grid {
+    width: 80vh !important;
+}
