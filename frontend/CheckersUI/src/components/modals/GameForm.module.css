@@ -8,22 +8,32 @@
     background: rgba(0, 0, 0, 0.5);
 }
 
-.game-type-card {
+.game-form-card,
+.inner-card {
     position: fixed;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 40vw;
-    height: 40vh;
+    border-radius: 1rem !important;
     padding: 1rem;
-    background-color: white;
-    border-color: black;
-    border-width: 2rem;
     z-index: 100;
     display: flex;
     flex-direction: column;
+}
+
+.game-form-card {
+    width: 35vw;
+    height: 70vh;
+    background-color: #a0b3c3 !important;
     animation: animatebottom 1s;
+}
+
+.inner-card {
+    width: 33vw;
+    height: 66vh;
+    background-color: #5f778b;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes animatebottom {
@@ -41,18 +51,23 @@
     }
 }
 
-.game-type-card .game-type-card-content {
+.game-form-card .inner-card .game-form-card-content {
     display: flex;
-    justify-content: center;
-    flex: 3;
+    justify-content: space-evenly;
     padding: 1rem;
 }
 
-.game-type-card .game-type-card-content Button {
-    width: 10vw;
-    height: 10vw;
-    background-color: #6f8a9d;
+.game-form-card .inner-card .game-form-card-content Button {
+    width: 8vw;
+    height: 8vw;
+    background-color: #a0b3c3;
     margin: 0 2vw 0 2vw;
+    border-radius: 0.5rem !important;
+}
+
+.game-form-card .inner-card .game-form-card-content .selected {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+    border: solid 1px black;
 }
 
 .game-type-icon {
@@ -60,22 +75,23 @@
     height: 6vw;
 }
 
-.game-type-card .actions-container {
+.game-form-card .inner-card .actions-container {
     height: fit-content;
-    flex: 1;
     padding: 0;
 }
 
-.game-type-card .actions-container .exit-button {
+.game-form-card .inner-card .actions-container .exit-button {
     height: fit-content;
     background-color: #e06565;
     min-width: 0;
     padding: 0.5vw;
     position: absolute;
-    right: 1rem;
+    right: 1vw;
+    top: 2vh;
+    box-shadow: 0 0 10px rgba(46, 42, 42, 0.5);
 }
 
-.game-type-card .actions-container .exit-button .exit-icon {
+.game-form-card .inner-card .actions-container .exit-button .exit-icon {
     width: 3vw;
     height: 3vw;
 }

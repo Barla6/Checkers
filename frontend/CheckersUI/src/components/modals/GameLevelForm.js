@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import styles from "./GameLevelForm.module.css";
 import { Card, CardContent, CardActions, Button } from "@mui/material";
-import { Link } from "react-router-dom";
 
 const GameLevelFormModal = (props) => {
     return (
@@ -23,18 +22,21 @@ const GameLevelFormModal = (props) => {
                 </CardActions>
                 <CardContent className={styles["game-level-card-content"]}>
                     <Button
+                        name="easy"
                         className={styles["level-easy"]}
                         onClick={props.chooseGameLevelHandler}
                     >
                         easy
                     </Button>
                     <Button
+                        name="medium"
                         className={styles["level-medium"]}
                         onClick={props.chooseGameLevelHandler}
                     >
                         medium
                     </Button>
                     <Button
+                        name="hard"
                         className={styles["level-hard"]}
                         onClick={props.chooseGameLevelHandler}
                     >
