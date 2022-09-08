@@ -1,12 +1,9 @@
 import React from "react";
 import styles from "./StartPage.module.css";
 import { Button } from "@mui/material";
-import GameTypeForm from "../modals/GameTypeForm";
 import { useState } from "react";
-import GameLevelForm from "../modals/GameLevelForm";
-import { useHistory } from "react-router-dom";
 import { createNewGame } from "../../API";
-import GameForm from "../modals/GameForm";
+import GameForm from "../GameForm/GameForm";
 
 const StartPage = () => {
     const [gameFormOpen, setGameFormOpen] = useState(false);

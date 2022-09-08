@@ -51,47 +51,7 @@
     }
 }
 
-.game-form-card .inner-card .game-form-card-content {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 1rem;
-}
-
-.game-form-card .inner-card .game-form-card-content Button {
-    width: 8vw;
-    height: 8vw;
-    background-color: #a0b3c3;
-    margin: 0 2vw 0 2vw;
-    border-radius: 0.5rem !important;
-}
-
-.game-form-card .inner-card .game-form-card-content .selected {
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
-    border: solid 1px black;
-}
-
-.game-type-icon {
-    width: 6vw;
-    height: 6vw;
-}
-
-.game-form-card .inner-card .actions-container {
+.game-form-card .inner-card .actions {
     height: fit-content;
     padding: 0;
-}
-
-.game-form-card .inner-card .actions-container .exit-button {
-    height: fit-content;
-    background-color: #e06565;
-    min-width: 0;
-    padding: 0.5vw;
-    position: absolute;
-    right: 1vw;
-    top: 2vh;
-    box-shadow: 0 0 10px rgba(46, 42, 42, 0.5);
-}
-
-.game-form-card .inner-card .actions-container .exit-button .exit-icon {
-    width: 3vw;
-    height: 3vw;
 }
