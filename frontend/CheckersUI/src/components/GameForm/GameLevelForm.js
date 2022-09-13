@@ -9,7 +9,7 @@ const GameLevelForm = (props) => {
                 disabled={props.disabled}
                 name="easy"
                 className={
-                    props.gameLevel === "easy" && `${styles["selected"]}`
+                    props.gameLevel.value === "easy" && `${styles["selected"]}`
                 }
                 onClick={props.gameLevelHandler}
             >
@@ -19,7 +19,8 @@ const GameLevelForm = (props) => {
                 disabled={props.disabled}
                 name="medium"
                 className={
-                    props.gameLevel === "medium" && `${styles["selected"]}`
+                    props.gameLevel.value === "medium" &&
+                    `${styles["selected"]}`
                 }
                 onClick={props.gameLevelHandler}
             >
@@ -29,7 +30,7 @@ const GameLevelForm = (props) => {
                 disabled={props.disabled}
                 name="hard"
                 className={
-                    props.gameLevel === "hard" && `${styles["selected"]}`
+                    props.gameLevel.value === "hard" && `${styles["selected"]}`
                 }
                 onClick={props.gameLevelHandler}
             >

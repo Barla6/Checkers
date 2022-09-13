@@ -1,6 +1,6 @@
-val ktor_version: String by project
+val ktor_version = "2.1.1"
 val kotlin_version = "1.5.20"
-val logback_version: String by project
+val logback_version = "1.2.11"
 
 plugins {
     id("checkers.kotlin-application-conventions")

@@ -8,7 +8,7 @@ const GameTypeForm = (props) => {
         <div className={styles["game-type-form"]}>
             <Button
                 className={`${styles["computer-vs-player-button"]} ${
-                    props.gameType === "computer_vs_player" &&
+                    props.gameType.value === "computer_vs_player" &&
                     `${styles["selected"]}`
                 }`}
                 onClick={props.gameTypeHandler}
@@ -23,7 +23,7 @@ const GameTypeForm = (props) => {
             </Button>
             <Button
                 className={`${styles["player-vs-player-button"]} ${
-                    props.gameType === "player_vs_player" &&
+                    props.gameType.value === "player_vs_player" &&
                     `${styles["selected"]}`
                 }`}
                 onClick={props.gameTypeHandler}

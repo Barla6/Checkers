@@ -1,46 +1,57 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import ReactDOM from "react-dom";
 import styles from "./GameForm.module.css";
-import { Card, CardContent, CardActions, Button } from "@mui/material";
+import { Card, CardContent, CardActions } from "@mui/material";
 import GameTypeForm from "./GameTypeForm";
 import GameLevelForm from "./GameLevelForm";
 import ExitButton from "./ExitButton";
 import PlayerNameInput from "./PlayerNameInput";
 import SubmitButton from "./SubmitButton";
+import { useHistory } from "react-router-dom";
+import {
+    gameLevelReducer,
+    gameTypeReducer,
+    playerNameReducer,
+} from "./gameFormReducers";
 
 const GameFormModal = (props) => {
-    const [gameType, setGameType] = useState();
-    const [gameLevel, setGameLevel] = useState();
-    const [playerName, setPlayerName] = useState();
+    const [gameType, dispatchGameType] = useReducer(gameTypeReducer, {
+        value: "",
+        isValid: false,
+    });
+    const [gameLevel, dispatchGameLevel] = useReducer(gameLevelReducer, {
+        value: "",
+        isValid: false,
+    });
+    const [playerName, dispatchPlayerName] = useReducer(playerNameReducer, "");
+    const history = useHistory();
 
     const gameTypeHandler = (event) => {
         const chosenGameType = event.target.name;
         if (chosenGameType === "player_vs_player") {
-            setGameLevel(null);
+            dispatchGameLevel({ type: "PLAYER_VS_PLAYER", value: "" });
         }
-        setGameType(chosenGameType);
+        dispatchGameType({ type: "CHANGE", value: chosenGameType });
     };
 
     const gameLevelHandler = (event) => {
-        setGameLevel(event.target.name);
+        dispatchGameLevel({ type: "CHANGE", value: event.target.name });
     };
 
     const playerNameHandler = (event) => {
-        setPlayerName(event.target.value);
+        dispatchPlayerName({ type: "CHANGE", value: event.target.value });
     };
 
     const submitHandler = (event) => {
-        if (isNameValid()) {
-            // Create New Game
-            // move to game page
-            // close form
+        if (validateFormContent()) {
+            // Create New Game (http)
+            history.push("/game");
             props.exitHandler();
         }
     };
 
-    const isNameValid = () => {
-        // check if it is unique
-        return true;
+    const validateFormContent = () => {
+        return gameType.isValid && gameLevel.isValid && playerName.isValid;
     };
 
     return (
@@ -62,7 +73,7 @@ const GameFormModal = (props) => {
                         <GameLevelForm
                             gameLevel={gameLevel}
                             gameLevelHandler={gameLevelHandler}
-                            disabled={gameType === "player_vs_player"}
+                            disabled={gameType.value !== "computer_vs_player"}
                         />
                     </CardContent>
                     <CardActions>
