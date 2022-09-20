@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./StartPage.module.css";
 import { Button } from "@mui/material";
 import { useState } from "react";
-import { createNewGame } from "../../API";
 import GameForm from "../GameForm/GameForm";
 
 const StartPage = () => {
@@ -14,12 +13,6 @@ const StartPage = () => {
 
     const exitGameFormHandler = () => {
         setGameFormOpen(false);
-    };
-
-    const chooseGameTypeHanlder = (event) => {
-        if (event.target.name === "computer vs player button") {
-        } else if (event.target.name === "player vs player button") {
-        }
     };
 
     const gameFormSubmitHandler = (event) => {};
