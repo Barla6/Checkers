@@ -5,6 +5,7 @@ class Game(val player1: Player, val player2: Player) {
     var board: Board = Board()
     var turnCounter = 0
     var winner: Player? = null
+    val level: GameLevel? = null
 
     val isOver: Boolean
         get() = winner != null || turnCounter >= MAX_TURNS

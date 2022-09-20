@@ -4,12 +4,22 @@ import com.checkers.neuroEvolution.NeuralNetwork
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import com.checkers.utlis.asyncMapIndexed
+import com.checkers.utlis.initOnce
 
-class AIPlayer(val brain: NeuralNetwork) : Player() {
+class AIPlayer() : Player() {
     private val scope = CoroutineScope(Dispatchers.Default)
 
-    init {
+    var brain: NeuralNetwork by initOnce()
+
+    constructor(brain: NeuralNetwork) : this() {
+        this.brain = brain
         name = brain.name
+    }
+
+    constructor(level: GameLevel, name: String) : this() {
+        this.brain = NeuralNetwork.ofLevel(level)
+            .apply { this.name = name }
+        this.name = name
     }
 
     suspend fun playTurn(board: Board): Board? {

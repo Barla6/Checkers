@@ -2,11 +2,11 @@ import React, { useReducer } from "react";
 import ReactDOM from "react-dom";
 import styles from "./GameForm.module.css";
 import { Card, CardContent, CardActions } from "@mui/material";
-import GameTypeForm from "./GameTypeForm";
-import GameLevelForm from "./GameLevelForm";
-import ExitButton from "./ExitButton";
-import PlayerNameInput from "./PlayerNameInput";
-import SubmitButton from "./SubmitButton";
+import GameTypeForm from "./gameFormComponents/GameTypeForm";
+import GameLevelForm from "./gameFormComponents/GameLevelForm";
+import ExitButton from "./gameFormComponents/ExitButton";
+import PlayerNameInput from "./gameFormComponents/PlayerNameInput";
+import SubmitButton from "./gameFormComponents/SubmitButton";
 import { useHistory } from "react-router-dom";
 import {
     gameLevelReducer,
@@ -44,7 +44,10 @@ const GameFormModal = (props) => {
 
     const submitHandler = (event) => {
         if (validateFormContent()) {
-            // Create New Game (http)
+            // TODO: Create New Game (http)
+            localStorage.setItem("gameLevel", gameLevel.value);
+            localStorage.setItem("gameType", gameType.value);
+            localStorage.setItem("playerName", playerName.value);
             history.push("/game");
             props.exitHandler();
         }

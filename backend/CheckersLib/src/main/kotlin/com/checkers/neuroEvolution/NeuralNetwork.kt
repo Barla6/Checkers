@@ -1,10 +1,9 @@
 package com.checkers.neuroEvolution
 
-import com.checkers.models.AIPlayer
-import com.checkers.models.Board
-import com.checkers.models.Game
-import com.checkers.models.Player
+import com.checkers.models.*
 import com.checkers.utlis.initOnce
+import java.io.FileInputStream
+import java.io.ObjectInputStream
 import kotlin.math.exp
 
 class NeuralNetwork(
@@ -61,6 +60,12 @@ class NeuralNetwork(
                 biasesHidden = Matrix.fromList(cols = hidden_nodes, list = dna[2])
                 biasesOutput = Matrix.fromList(cols = output_nodes, list = dna[3])
             }
+
+        fun ofLevel(level: GameLevel): NeuralNetwork {
+            val path = GameLevel.getLevelFilePath(level)
+            val dna = ObjectInputStream(FileInputStream(path)).use { it.readObject() } as DNA
+            return fromDNA(32, 16, 1, dna)
+        }
     }
 
     // activation function: sigmoid

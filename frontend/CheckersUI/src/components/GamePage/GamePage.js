@@ -8,7 +8,11 @@ const GamePage = (props) => {
         <div className={styles["game-page"]}>
             <SideBar className={styles["sidebar"]}></SideBar>
             <Board className={styles["board"]}></Board>
-            <SideBar className={styles["sidebar"]}></SideBar>
+            <SideBar
+                className={styles["sidebar"]}
+                showGameLevel={true}
+                showQuitButton={true}
+            ></SideBar>
         </div>
     );
 };
