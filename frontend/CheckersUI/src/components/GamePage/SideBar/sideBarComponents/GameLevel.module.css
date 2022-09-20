@@ -1,0 +1,27 @@
+.game-level {
+    border: solid 3px #a0b3c3;
+    height: fit-content;
+    width: 30vh;
+    align-self: center;
+    border-radius: 1rem;
+    background-color: #40515f;
+    padding: 1vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: auto;
+}
+
+.title {
+    font-family: "Nunito", sans-serif;
+    margin: 0;
+    text-align: left;
+    font-size: 2.5vh;
+    color: #a0b3c3;
+}
+
+.level-name {
+    font-family: "Nunito", sans-serif;
+    margin: 0;
+    font-size: 6vh;
+    color: #a0b3c3;
+    text-transform: uppercase;
+}

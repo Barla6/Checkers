@@ -1,0 +1,16 @@
+.quit-button {
+    border: solid 3px #a0b3c3 !important;
+    height: 15vh;
+    width: 15vh;
+    align-self: center;
+    border-radius: 1rem !important;
+    background-color: #40515f !important;
+    padding: 1vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-top: auto;
+}
+
+.quit-icon {
+    height: 10vh;
+    width: 10vh;
+}
