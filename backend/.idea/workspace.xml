@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="924e5ac1-c188-49ec-b203-b490ee539d72" name="Changes" comment="...">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Board.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Board.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/Application.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/Application.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/models/GamesManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/models/GamesManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/plugins/Routing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/plugins/Routing.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/StartPage/StartPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/StartPage/StartPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +47,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Enum" />
+        <option value="Kotlin Object" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -58,6 +63,9 @@
   <component name="MacroExpansionManager">
     <option name="directoryName" value="drahcu2w" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2EiPg7F4frav44I910a1cDqlUDR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -65,19 +73,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="com.models" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Kotlin.ApplicationKt (1)">
+    <configuration name="ApplicationKt (1)" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ApplicationKt" />
+      <module name="Checkers.CheckersServer.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ApplicationKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.checkers.ApplicationKt" />
       <module name="Checkers.CheckersLib.main" />
@@ -87,6 +100,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.ApplicationKt (1)" />
         <item itemvalue="Kotlin.ApplicationKt" />
       </list>
     </recent_temporary>
@@ -114,7 +128,21 @@
       <option name="project" value="LOCAL" />
       <updated>1663685196055</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="...">
+      <created>1663686775716</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1663686775716</updated>
+    </task>
+    <task id="LOCAL-00004" summary="...">
+      <created>1663686825132</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1663686825132</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

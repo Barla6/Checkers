@@ -1,7 +1,7 @@
 package com.checkers.models
 
 class Board(
-    private var board: Array<Array<Piece?>> = Array(ROWS_NUMBER) { Array(COLS_NUMBER) { null } }
+    var board: Array<Array<Piece?>> = Array(ROWS_NUMBER) { Array(COLS_NUMBER) { null } }
 ) : Cloneable {
 
     companion object {
