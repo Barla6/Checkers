@@ -34,12 +34,13 @@ enum class GameType {
         override suspend fun runGame(game: Game) {
             val reader = Scanner(System.`in`)
             var currentPlayer = game.getRandomPlayer()
-
+            var oppositePlayer = game.getOppositePlayer(currentPlayer)!!
             while (!game.isOver) {
+
                 if (currentPlayer is HumanPlayer) {
-                    val movesTree = MovesTree.create(currentPlayer, game.board, 1)
+                    val movesTree = MovesTree.create(currentPlayer, oppositePlayer, game.board, 1)
                     if (movesTree.nextSteps!!.isEmpty())
-                        game.winner = currentPlayer.oppositePlayer
+                        game.winner = oppositePlayer
                     val leadingStepsAndFinalBoards = movesTree.getLeadingStepsAndFinalBoards()
 
                     println("choose move:")
@@ -52,9 +53,9 @@ enum class GameType {
                     game.board = stepSequence.resultBoard
                 }
                 if (currentPlayer is AIPlayer) {
-                    val turnResult = currentPlayer.playTurn(game.board)
+                    val turnResult = currentPlayer.playTurn(game)
                     if (turnResult == null) {
-                        game.winner = currentPlayer.oppositePlayer
+                        game.winner = oppositePlayer
                         return
                     }
 
@@ -67,24 +68,29 @@ enum class GameType {
                 game.checkForWinner()
                 if (game.isOver) return
 
-                currentPlayer = currentPlayer.oppositePlayer
+                val playerHolder = currentPlayer
+                currentPlayer = oppositePlayer
+                oppositePlayer = playerHolder
             }
         }
     },
     COMPUTER_VS_COMPUTER {
         override suspend fun runGame(game: Game) {
-            var player = game.getRandomPlayer() as AIPlayer
+            var currentPlayer = game.getRandomPlayer() as AIPlayer
+            var oppositePlayer = game.getOppositePlayer(currentPlayer)!!
             while (!game.isOver) {
-                val newBoard = player.playTurn(game.board)
+                val newBoard = currentPlayer.playTurn(game)
                 game.turnCounter++
                 if (newBoard != null) {
                     game.board = newBoard
-                    if (game.board.countPiecesOfPlayer(player.oppositePlayer) == 0) game.winner = player
+                    if (game.board.countPiecesOfPlayer(oppositePlayer) == 0) game.winner = currentPlayer
 //                    game.board.print()
                 } else {
-                    game.winner = player
+                    game.winner = currentPlayer
                 }
-                player = player.oppositePlayer as AIPlayer
+                val playerHolder = currentPlayer
+                currentPlayer = oppositePlayer as AIPlayer
+                oppositePlayer = playerHolder
             }
         }
     };

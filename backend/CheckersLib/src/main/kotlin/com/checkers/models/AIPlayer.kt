@@ -22,8 +22,8 @@ class AIPlayer() : Player() {
         this.name = name
     }
 
-    suspend fun playTurn(board: Board): Board? {
-        val movesTree = MovesTree.create(this, board, 3)
+    suspend fun playTurn(game: Game): Board? {
+        val movesTree = MovesTree.create(this, game.getOppositePlayer(this)!!, game.board, 3)
         val leadingStepsAndFinalBoards = movesTree.getLeadingStepsAndFinalBoards()
         if (leadingStepsAndFinalBoards.isEmpty()) return null
         val bestBoard = pickBoardAsync(leadingStepsAndFinalBoards.map { it.finalBoard })
@@ -36,5 +36,10 @@ class AIPlayer() : Player() {
             .asyncMapIndexed(scope) {index, board -> index to brain.rate(board, this@AIPlayer)}
             .maxByOrNull { it.second }
         return boards[bestBoard!!.first]
+    }
+
+    fun clone(): AIPlayer = AIPlayer(this.brain).apply {
+        id = this@AIPlayer.id
+        name = this@AIPlayer.name
     }
 }

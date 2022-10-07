@@ -4,8 +4,6 @@ import com.checkers.GameRunner
 import com.checkers.models.AIPlayer
 import com.checkers.models.Game
 import kotlinx.coroutines.*
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
 import com.checkers.utlis.ProgressBar
 
 class GameManager(private val population: Population) {

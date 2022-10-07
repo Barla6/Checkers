@@ -17,17 +17,23 @@ class Game(val player1: Player, val player2: Player) {
 
     init {
         player1.apply {
-            oppositePlayer = player2
             playerDirection = PlayerDirection.UPWARDS
         }
         player2.apply {
-            oppositePlayer = player1
             playerDirection = PlayerDirection.DOWNWARDS
         }
         board.initGameBoard(player1, player2)
     }
 
     fun getRandomPlayer() = listOf(player1, player2).random()
+
+    fun getOppositePlayer(player: Player): Player? =
+        when(player) {
+            player1 -> player2
+            player2 -> player1
+            else -> null
+        }
+
 
     fun checkForWinner() {
         winner =  when {

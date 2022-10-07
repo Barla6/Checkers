@@ -9,26 +9,27 @@ data class MovesTree(val stepSequence: StepSequence? = null) {
     var nextSteps: List<MovesTree>? by initOnce()
 
     companion object {
-        suspend fun create(startPlayer: Player, board: Board, depth: Int = 1): MovesTree =
+        suspend fun create(startPlayer: Player, oppositePlayer: Player, board: Board, depth: Int = 1): MovesTree =
             MovesTree(null).apply {
-                nextSteps = getAllPossibleNextMovesAsync(startPlayer, board, depth)
+                nextSteps = getAllPossibleNextMovesAsync(startPlayer, oppositePlayer, board, depth)
             }
     }
 
-    private suspend fun getAllPossibleNextMovesAsync(player: Player, board: Board, depth: Int): List<MovesTree>? {
+    private suspend fun getAllPossibleNextMovesAsync(currentPlayer: Player, oppositePlayer: Player, board: Board, depth: Int): List<MovesTree>? {
         if (depth == 0 ||
-            board.countPiecesOfPlayer(player) == 0 ||
-            board.countPiecesOfPlayer(player.oppositePlayer) == 0
+            board.countPiecesOfPlayer(currentPlayer) == 0 ||
+            board.countPiecesOfPlayer(oppositePlayer) == 0
         ) return null
 
-        return board.getCoordinatesOfPlayer(player)
+        return board.getCoordinatesOfPlayer(currentPlayer)
             .map { StepSequence(board.clone(), listOf(it)) }
             .flatMap { it.getPossibleTurnsForPieceAsync() }
             .map { MovesTree(it) }
             .asyncMap(scope) { it.apply {
                 nextSteps =
                     getAllPossibleNextMovesAsync(
-                        player.oppositePlayer,
+                        oppositePlayer,
+                        currentPlayer,
                         it.stepSequence!!.resultBoard,
                         depth - 1
                     )

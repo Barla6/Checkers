@@ -2,7 +2,7 @@ package com
 
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
-import com.plugins.*
+import com.routing.configureRouting
 import io.ktor.serialization.gson.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.contentnegotiation.*

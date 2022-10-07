@@ -29,5 +29,5 @@ class Piece(
         return result
     }
 
-    fun enemyOf(other: Piece) = this.player.oppositePlayer == other.player
+    fun enemyOf(other: Piece) = this.player != other.player
 }
