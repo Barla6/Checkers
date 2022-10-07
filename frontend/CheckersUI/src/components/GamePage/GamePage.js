@@ -3,7 +3,7 @@ import Board from "./Board/Board";
 import SideBar from "./SideBar/SideBar";
 import styles from "./GamePage.module.css";
 
-const GamePage = (props) => {
+const GamePage = () => {
     return (
         <div className={styles["game-page"]}>
             <SideBar className={styles["sidebar"]}></SideBar>

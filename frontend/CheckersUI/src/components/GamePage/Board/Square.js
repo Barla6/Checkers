@@ -1,5 +1,6 @@
 import React from "react";
 import Piece from "./Piece";
+import PossibleMoveMark from "./PossibleMoveMark";
 import styles from "./Square.module.css";
 
 const Square = (props) => {
@@ -8,15 +9,17 @@ const Square = (props) => {
             className={styles["square"]}
             style={{ backgroundColor: props.colored ? "#A0B3C3" : "white" }}
         >
-            {props.piece && (
+            {props.square.piece && (
                 <Piece
                     className={styles["piece"]}
-                    color={
-                        props.piece.direction === "UPWARDS" ? "black" : "red"
-                    }
-                    king={props.piece.type === "KING"}
+                    playerId={props.square.piece.playerId}
+                    king={props.square.piece.type === "KING"}
+                    getPossibleMoves={props.getPossibleMoves}
+                    cleanPossibleMoves={props.cleanPossibleMoves}
+                    coordinates={props.square.coordinates}
                 ></Piece>
             )}
+            {props.possibleMove && <PossibleMoveMark />}
         </div>
     );
 };

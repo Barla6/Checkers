@@ -1,25 +1,24 @@
 import React, { useState } from "react";
 
 const GameContext = React.createContext({
-    gameLevel: "",
-    updateGameContext: (gameProperties) => {},
+    gameBoard: [],
+    setBoard: () => {},
 });
 
-export const GameContextProvider = (props) => {
-    const [gameLevel, setGameLevel] = useState("");
-
-    const updateGameContext = (gameProperties) => {
-        setGameLevel(gameProperties.gameLevel);
+export const GameBoardProvider = (props) => {
+    const [gameBoard, setGameBoard] = useState([]);
+    const setBoard = (board) => {
+        setGameBoard(board);
     };
 
     return (
         <GameContext.Provider
             value={{
-                gameLevel: gameLevel,
-                updateGameContext: updateGameContext,
+                gameBoard: gameBoard,
+                setBoard: setBoard,
             }}
         >
-            {props.children.props.children}
+            {props.children}
         </GameContext.Provider>
     );
 };

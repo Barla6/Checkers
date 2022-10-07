@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext } from "react";
 import ReactDOM from "react-dom";
 import styles from "./GameForm.module.css";
 import { Card, CardContent, CardActions } from "@mui/material";
@@ -13,8 +13,12 @@ import {
     gameTypeReducer,
     playerNameReducer,
 } from "./gameFormReducers";
+import { api } from "../../API";
+import GameContext from "../../context/game-context";
 
 const GameFormModal = (props) => {
+    const boardContext = useContext(GameContext);
+
     const [gameType, dispatchGameType] = useReducer(gameTypeReducer, {
         value: "",
         isValid: false,
@@ -42,12 +46,19 @@ const GameFormModal = (props) => {
         dispatchPlayerName({ type: "CHANGE", value: event.target.value });
     };
 
-    const submitHandler = (event) => {
+    const submitHandler = async () => {
         if (validateFormContent()) {
-            // TODO: Create New Game (http)
+            const response = await api.createNewGame(
+                gameLevel.value,
+                playerName.value
+            );
+            boardContext.setBoard(response.board);
+            localStorage.setItem("gameId", response.gameId);
+            localStorage.setItem("playerId", response.playerId);
+            localStorage.setItem("turnBoard", response.turnBoard); // todo: use game board
             localStorage.setItem("gameLevel", gameLevel.value);
             localStorage.setItem("gameType", gameType.value);
-            localStorage.setItem("playerName", playerName.value);
+            localStorage.setItem("playerName", playerName.value); // todo: maybe delete
             history.push("/game");
             props.exitHandler();
         }
