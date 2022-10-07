@@ -26,8 +26,6 @@ internal class CanEatTest {
         enemyPlayer = HumanPlayer("enemy").apply {
             playerDirection = PlayerDirection.UPWARDS
         }
-        friendlyPlayer.oppositePlayer = enemyPlayer
-        enemyPlayer.oppositePlayer = friendlyPlayer
         friendlyPiece = Piece(friendlyPlayer)
         friendlyKing = Piece(friendlyPlayer, PieceType.KING)
         enemyPiece = Piece(enemyPlayer)

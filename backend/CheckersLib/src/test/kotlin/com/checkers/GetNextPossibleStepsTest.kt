@@ -25,8 +25,6 @@ internal class GetNextPossibleStepsTest {
         enemyPlayer = HumanPlayer("enemy").apply {
             playerDirection = PlayerDirection.DOWNWARDS
         }
-        friendlyPlayer.oppositePlayer = enemyPlayer
-        enemyPlayer.oppositePlayer = friendlyPlayer
         friendlyPiece = Piece(friendlyPlayer)
         enemyPiece = Piece(enemyPlayer)
         friendlyKing = Piece(friendlyPlayer, PieceType.KING)
