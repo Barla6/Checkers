@@ -4,17 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="924e5ac1-c188-49ec-b203-b490ee539d72" name="Changes" comment="...">
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Board.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Board.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersServer/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/Application.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/Application.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/models/GamesManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/models/GamesManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/plugins/Routing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/plugins/Routing.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/file-system.probe" afterDir="false" />
+    <list default="true" id="924e5ac1-c188-49ec-b203-b490ee539d72" name="Changes" comment="WIP">
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/management/AIPlayers.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/management/GamesManager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/management/PlayersManager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/requestsClasses/NewGameRequest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/requestsClasses/PossibleMovesRequest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responseClasses/BoardToSend.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responseClasses/NewGameResponse.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responseClasses/PieceToSend.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responseClasses/SquareToSend.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,11 +74,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
-  }
-}]]></component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="com.models" />
@@ -142,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663686825132</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="WIP">
+      <created>1665150816081</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1665150816081</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -155,10 +158,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="..." />
-    <option name="LAST_COMMIT_MESSAGE" value="..." />
+    <MESSAGE value="WIP" />
+    <option name="LAST_COMMIT_MESSAGE" value="WIP" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
