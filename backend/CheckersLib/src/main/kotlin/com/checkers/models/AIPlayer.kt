@@ -40,6 +40,5 @@ class AIPlayer() : Player() {
 
     fun clone(): AIPlayer = AIPlayer(this.brain).apply {
         id = this@AIPlayer.id
-        name = this@AIPlayer.name
     }
 }
