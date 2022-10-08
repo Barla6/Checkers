@@ -1,0 +1,7 @@
+.dot {
+    height: 4vh;
+    width: 4vh;
+    background-color: #40515f;
+    border-radius: 100%;
+    box-shadow: 0 0 10px rgb(255, 255, 255);
+}

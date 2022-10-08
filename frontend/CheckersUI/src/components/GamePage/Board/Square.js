@@ -1,22 +1,29 @@
 import React from "react";
 import Piece from "./Piece";
+import PossibleMoveMark from "./PossibleMoveMark";
 import styles from "./Square.module.css";
 
 const Square = (props) => {
+    const colored =
+        props.square.coordinates.col % 2 ===
+        (props.square.coordinates.row + 1) % 2;
+
     return (
         <div
-            className={styles["square"]}
-            style={{ backgroundColor: props.colored ? "#A0B3C3" : "white" }}
+            className={`${styles["square"]} ${
+                props.chosenPiece && `${styles["chosen-piece"]}`
+            }`}
+            style={{ backgroundColor: colored ? "#A0B3C3" : "white" }}
         >
-            {props.piece && (
+            {props.square.piece && (
                 <Piece
                     className={styles["piece"]}
-                    color={
-                        props.piece.direction === "UPWARDS" ? "black" : "red"
-                    }
-                    king={props.piece.type === "KING"}
+                    piece={props.square.piece}
+                    coordinates={props.square.coordinates}
+                    getPossibleMoves={props.getPossibleMoves}
                 ></Piece>
             )}
+            {props.possibleMove && <PossibleMoveMark />}
         </div>
     );
 };

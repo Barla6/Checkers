@@ -13,6 +13,7 @@ import {
     gameTypeReducer,
     playerNameReducer,
 } from "./gameFormReducers";
+import { api } from "../../API";
 
 const GameFormModal = (props) => {
     const [gameType, dispatchGameType] = useReducer(gameTypeReducer, {
@@ -42,14 +43,28 @@ const GameFormModal = (props) => {
         dispatchPlayerName({ type: "CHANGE", value: event.target.value });
     };
 
-    const submitHandler = (event) => {
+    const submitHandler = async (event) => {
         if (validateFormContent()) {
-            // TODO: Create New Game (http)
+            const gameData = await api.createNewGame(
+                gameLevel.value,
+                playerName.value
+            );
+            console.log(gameData);
+            localStorage.setItem("gameId", gameData.gameId);
+            localStorage.setItem("playerId", gameData.playerId);
+            localStorage.setItem(
+                "boardData",
+                JSON.stringify({
+                    board: gameData.board,
+                    turnBoard: gameData.turnBoard,
+                })
+            );
             localStorage.setItem("gameLevel", gameLevel.value);
+            // TODO: MAYBE NOT
             localStorage.setItem("gameType", gameType.value);
             localStorage.setItem("playerName", playerName.value);
-            history.push("/game");
             props.exitHandler();
+            history.push("/game");
         }
     };
 
