@@ -12,7 +12,7 @@ const Square = (props) => {
         <div
             className={`${styles["square"]} ${
                 props.chosenPiece && `${styles["chosen-piece"]}`
-            }`}
+            } ${props.possibleMove && `${styles["possible-move"]}`}`}
             style={{ backgroundColor: colored ? "#A0B3C3" : "white" }}
         >
             {props.square.piece && (

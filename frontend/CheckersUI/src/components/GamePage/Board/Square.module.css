@@ -7,6 +7,7 @@
     justify-content: center;
 }
 
-.chosen-piece {
-    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+.chosen-piece,
+.possible-move {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }

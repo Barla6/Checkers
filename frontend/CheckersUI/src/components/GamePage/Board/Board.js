@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, responsiveFontSizes } from "@mui/material";
+import { Grid } from "@mui/material";
 import Square from "./Square";
 import styles from "./Board.module.css";
 import { api } from "../../../API";
@@ -12,7 +12,7 @@ const Board = () => {
             : fetchedBoardData.board;
     };
 
-    const [board, setBoardData] = useState(getBoard());
+    const [board] = useState(getBoard());
     const [possibleMoves, setPossibleMoves] = useState([]);
     const [chosenPiece, setChosenPiece] = useState({});
 
