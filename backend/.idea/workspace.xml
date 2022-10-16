@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="924e5ac1-c188-49ec-b203-b490ee539d72" name="Changes" comment="change styles">
+    <list default="true" id="924e5ac1-c188-49ec-b203-b490ee539d72" name="Changes" comment="save changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/StepSequence.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/StepSequence.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/NewGameResponseBody.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/NewGameResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/requestsClasses/PossibleMovesRequestBody.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/requestsClasses/PossibleMovesRequestBody.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/BoardToSend.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/BoardToSend.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/routing/Routing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/routing/Routing.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GamePage/Board/Board.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GamePage/Board/Board.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GamePage/Board/Piece.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GamePage/Board/Piece.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GamePage/Board/Piece.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GamePage/Board/Piece.module.css" afterDir="false" />
@@ -267,7 +265,21 @@
       <option name="project" value="LOCAL" />
       <updated>1665161807282</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="save changes">
+      <created>1665910223681</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1665910223681</updated>
+    </task>
+    <task id="LOCAL-00008" summary="save changes">
+      <created>1665910409385</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1665910409387</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -285,7 +297,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="..." />
     <MESSAGE value="preparing classes for using in requests" />
-    <option name="LAST_COMMIT_MESSAGE" value="preparing classes for using in requests" />
+    <MESSAGE value="save changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="save changes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

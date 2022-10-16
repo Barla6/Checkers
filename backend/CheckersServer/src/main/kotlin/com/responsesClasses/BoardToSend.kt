@@ -1,18 +1,15 @@
 package com.responsesClasses
 
 import com.checkers.models.Board
-import com.checkers.models.Coordinates
 
-typealias BoardToSend = MutableList<SquareToSend>
+typealias BoardToSend = MutableList<MutableList<PieceToSend?>>
 
 fun createBoardToSend(board: Board): BoardToSend {
-    return board.board.mapIndexed { rowIndex, row ->
-        row.mapIndexed { colIndex, piece ->
-            val pieceToSend =
+    return board.board.map { row ->
+        row.map { piece ->
                 if (piece == null) null
                 else PieceToSend(piece.player.id.toString(), piece.type.name)
-            val coordinates = Coordinates(rowIndex, colIndex)
-            SquareToSend(coordinates, pieceToSend)
-        }
-    }.flatten().toMutableList()
+
+        }.toMutableList()
+    }.toMutableList()
 }

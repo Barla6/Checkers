@@ -9,9 +9,7 @@ import com.management.GamesManager
 import com.management.PlayersManager
 import com.requestsClasses.NewGameRequestBody
 import com.requestsClasses.PossibleMovesRequestBody
-import com.responsesClasses.NewGameResponse
-import com.responsesClasses.PossibleMoveToSend
-import com.responsesClasses.createBoardToSend
+import com.responsesClasses.*
 import io.ktor.server.routing.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
