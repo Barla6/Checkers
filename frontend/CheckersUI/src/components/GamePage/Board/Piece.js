@@ -4,13 +4,8 @@ import styles from "./Piece.module.css";
 const Piece = (props) => {
     const myPiece = props.piece.playerId === localStorage.getItem("playerId");
     const king = props.piece.type === "KING";
-    const pieceClickHandler = async () => {
-        if (myPiece) {
-            await props.getPossibleMoves(props.coordinates);
-        }
-    };
 
-    const pickPiece = () => {
+    const getPieceIcon = () => {
         if (myPiece)
             return king
                 ? require("../../../assets/red_king.png")
@@ -23,9 +18,8 @@ const Piece = (props) => {
     return (
         <img
             className={styles["piece-icon"]}
-            src={pickPiece()}
+            src={getPieceIcon()}
             alt="piece icon"
-            onClick={pieceClickHandler}
         ></img>
     );
 };

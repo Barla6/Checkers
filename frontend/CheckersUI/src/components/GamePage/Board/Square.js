@@ -8,19 +8,24 @@ const Square = (props) => {
         props.square.coordinates.col % 2 ===
         (props.square.coordinates.row + 1) % 2;
 
+    const squareClickHandler = () => {
+        props.squareClickHandler(props.square.coordinates);
+    };
+
     return (
         <div
             className={`${styles["square"]} ${
                 props.chosenPiece && `${styles["chosen-piece"]}`
-            } ${props.possibleMove && `${styles["possible-move"]}`}`}
+            }`}
             style={{ backgroundColor: colored ? "#A0B3C3" : "white" }}
+            onClick={squareClickHandler}
         >
             {props.square.piece && (
                 <Piece
                     className={styles["piece"]}
                     piece={props.square.piece}
                     coordinates={props.square.coordinates}
-                    getPossibleMoves={props.getPossibleMoves}
+                    chosenPiece={props.chosenPiece}
                 ></Piece>
             )}
             {props.possibleMove && <PossibleMoveMark />}
