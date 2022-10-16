@@ -10,6 +10,7 @@ import com.management.PlayersManager
 import com.requestsClasses.NewGameRequestBody
 import com.requestsClasses.PossibleMovesRequestBody
 import com.responsesClasses.NewGameResponse
+import com.responsesClasses.PossibleMoveToSend
 import com.responsesClasses.createBoardToSend
 import io.ktor.server.routing.*
 import io.ktor.server.application.*
@@ -51,7 +52,8 @@ fun Application.configureRouting() {
             // todo: return status code of error
             val game = GamesManager.getGame(gameId.toInt())!!
             val stepSequence = StepSequence(game.board, listOf(requestBody.coordinates))
-            val possibleMoves = stepSequence.getPossibleTurnsForPieceAsync().map {it.currentCoordinates}
+            val possibleMoves = stepSequence.getPossibleTurnsForPieceAsync()
+                    .map { PossibleMoveToSend(it.steps, it.resultBoard) }
             call.respond(possibleMoves)
         }
 

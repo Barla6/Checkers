@@ -7,7 +7,7 @@ import kotlinx.coroutines.Dispatchers
 
 class StepSequence(
     val startingBoard: Board,
-    private val steps: List<Coordinates>,
+    val steps: List<Coordinates>,
     private val eaten: Boolean = false,
     private val completed: Boolean = false
 ) {
