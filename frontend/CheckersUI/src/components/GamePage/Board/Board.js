@@ -98,20 +98,19 @@ const Board = () => {
         }
     };
 
-    const getPossibleMoves = async () => {
-        const fetchedPossibleMoves = await api.getPossibleMoves(
-            board,
-            chosenPieceCoordinates,
-            turnData.eaten
-        );
-        if (!fetchedPossibleMoves) {
-            setShowError(true);
-        } else {
-            setPossibleSteps(fetchedPossibleMoves);
-        }
-    };
-
     useEffect(() => {
+        const getPossibleMoves = async () => {
+            const fetchedPossibleMoves = await api.getPossibleMoves(
+                board,
+                chosenPieceCoordinates,
+                turnData.eaten
+            );
+            if (!fetchedPossibleMoves) {
+                setShowError(true);
+            } else {
+                setPossibleSteps(fetchedPossibleMoves);
+            }
+        };
         if (
             chosenPieceCoordinates.row != null &&
             chosenPieceCoordinates.col != null &&
