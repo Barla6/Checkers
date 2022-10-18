@@ -28,7 +28,7 @@ const Square = (props) => {
                     chosenPiece={props.chosenPiece}
                 ></Piece>
             )}
-            {props.possibleMove && <PossibleMoveMark />}
+            {props.possibleStep && <PossibleMoveMark />}
         </div>
     );
 };

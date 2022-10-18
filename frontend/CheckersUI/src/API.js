@@ -17,12 +17,11 @@ export const api = {
                 console.log(err);
             });
     },
-    getPossibleMoves: async (coordinates) => {
-        const gameId = localStorage.getItem("gameId");
+    getPossibleMoves: async (board, coordinates, eaten) => {
         return axios
             .post(
                 `${serverURL}/possible-moves`,
-                { gameId, coordinates },
+                { board, coordinates, eaten },
                 { headers }
             )
             .then((response) => {
