@@ -3,6 +3,8 @@ import { Grid } from "@mui/material";
 import Square from "./Square";
 import styles from "./Board.module.css";
 import { api } from "../../../API";
+import ErrorMessage from "../ErrorMessage";
+import { useHistory } from "react-router-dom";
 
 const equalCoordinates = (a, b) => {
     return a.row === b.row && a.col === b.col;
@@ -26,6 +28,8 @@ const Board = () => {
         completed: false,
     });
     const [possibleSteps, setPossibleSteps] = useState([]);
+    const [showError, setShowError] = useState(false);
+    const history = useHistory();
 
     const isChosenCoordinates = (coordinates) => {
         return equalCoordinates(chosenPieceCoordinates, coordinates);
@@ -42,11 +46,24 @@ const Board = () => {
             equalCoordinates(coordinates, step.step)
         );
     };
-    const squareClickHandler = (coordinates) => {
+    const squareClickHandler = async (coordinates) => {
         const possibleStep = getPossibleStep(coordinates);
         const piece = getPiece(board, coordinates);
-        if (isChosenCoordinates(coordinates)) {
-            // todo: confirm turn, set default values and get the turn of the computer
+        if (isChosenCoordinates(coordinates) && turnData.progress.length >= 2) {
+            const newBoard = await api.playTurn(turnData.progress);
+            if (!newBoard) {
+                setShowError(true);
+            } else {
+                setBoard(newBoard);
+                boardData.board = newBoard;
+                localStorage.setItem("boardData", JSON.stringify(boardData));
+                setChosenPieceCoordinates({});
+                setTurnData({
+                    progress: [],
+                    eaten: false,
+                    completed: false,
+                });
+            }
         } else if (isMyPiece(piece)) {
             setChosenPieceCoordinates(coordinates);
             setBoard(boardData.board);
@@ -81,29 +98,39 @@ const Board = () => {
         }
     };
 
-    useEffect(() => {
-        const getPossibleMoves = async (coordinates) => {
-            const fetchedPossibleMoves = await api.getPossibleMoves(
-                board,
-                coordinates,
-                turnData.eaten
-            );
+    const getPossibleMoves = async () => {
+        const fetchedPossibleMoves = await api.getPossibleMoves(
+            board,
+            chosenPieceCoordinates,
+            turnData.eaten
+        );
+        if (!fetchedPossibleMoves) {
+            setShowError(true);
+        } else {
             setPossibleSteps(fetchedPossibleMoves);
-        };
+        }
+    };
+
+    useEffect(() => {
         if (
-            chosenPieceCoordinates.row &&
-            chosenPieceCoordinates.col &&
-            board[chosenPieceCoordinates.row][chosenPieceCoordinates.col] &&
+            chosenPieceCoordinates.row != null &&
+            chosenPieceCoordinates.col != null &&
+            getPiece(board, chosenPieceCoordinates) &&
             !turnData.completed
         ) {
-            getPossibleMoves(chosenPieceCoordinates);
+            getPossibleMoves();
         } else {
             setPossibleSteps([]);
         }
     }, [chosenPieceCoordinates, turnData, board]);
 
+    const goHomeHandler = () => {
+        history.push("/");
+    };
+
     return (
         <div className={styles["board"]}>
+            <ErrorMessage open={showError} goHomeHandler={goHomeHandler} />
             <Grid className={styles["board-grid"]} container columns={8}>
                 {[...Array(8).keys()]
                     .map((rowIndex) => {

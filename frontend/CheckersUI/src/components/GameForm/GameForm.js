@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import ReactDOM from "react-dom";
 import styles from "./GameForm.module.css";
 import { Card, CardContent, CardActions } from "@mui/material";
@@ -26,6 +26,7 @@ const GameFormModal = (props) => {
     });
     const [playerName, dispatchPlayerName] = useReducer(playerNameReducer, "");
     const history = useHistory();
+    const [showError, setShowError] = useState(false);
 
     const gameTypeHandler = (event) => {
         const chosenGameType = event.target.name;
@@ -49,22 +50,25 @@ const GameFormModal = (props) => {
                 gameLevel.value,
                 playerName.value
             );
-            console.log(gameData);
-            localStorage.setItem("gameId", gameData.gameId);
-            localStorage.setItem("playerId", gameData.playerId);
-            localStorage.setItem(
-                "boardData",
-                JSON.stringify({
-                    board: gameData.board,
-                    turnBoard: gameData.turnBoard,
-                })
-            );
-            localStorage.setItem("gameLevel", gameLevel.value);
-            // TODO: MAYBE NOT
-            localStorage.setItem("gameType", gameType.value);
-            localStorage.setItem("playerName", playerName.value);
-            props.exitHandler();
-            history.push("/game");
+            if (gameData === undefined) {
+                setShowError(true);
+            } else {
+                localStorage.setItem("gameId", gameData.gameId);
+                localStorage.setItem("playerId", gameData.playerId);
+                localStorage.setItem(
+                    "boardData",
+                    JSON.stringify({
+                        board: gameData.board,
+                        turnBoard: gameData.turnBoard,
+                    })
+                );
+                localStorage.setItem("gameLevel", gameLevel.value);
+                // TODO: MAYBE NOT
+                localStorage.setItem("gameType", gameType.value);
+                localStorage.setItem("playerName", playerName.value);
+                props.exitHandler();
+                history.push("/game");
+            }
         }
     };
 
@@ -97,6 +101,11 @@ const GameFormModal = (props) => {
                     <CardActions>
                         <SubmitButton submitHandler={submitHandler} />
                     </CardActions>
+                    {showError && (
+                        <div className={styles["error-message"]}>
+                            Server is not responding... please try again!
+                        </div>
+                    )}
                 </div>
             </Card>
         </React.Fragment>

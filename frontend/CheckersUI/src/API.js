@@ -31,4 +31,20 @@ export const api = {
                 console.log(err);
             });
     },
+    playTurn: async (steps) => {
+        const gameId = localStorage.getItem("gameId");
+        const playerId = localStorage.getItem("playerId");
+        return axios
+            .post(
+                `${serverURL}/play-turn`,
+                { steps, gameId, playerId },
+                { headers }
+            )
+            .then((response) => {
+                return response.data;
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    },
 };

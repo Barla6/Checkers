@@ -30,7 +30,6 @@ const StartPage = () => {
                     src={require("../../assets/header.png")}
                     alt="header img"
                 ></img>
-                {/* <h1 className={styles["title"]}>CHECKERS</h1> */}
                 <Button
                     className={styles["play-button"]}
                     variant="contained"
