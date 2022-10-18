@@ -1,6 +1,5 @@
 package com.responsesClasses
 
-import com.checkers.models.Board
 import com.checkers.models.Coordinates
 
-data class PossibleMoveToSend(val sequence: List<Coordinates>, val board: Board)
+data class PossibleMoveToSend(val step: Coordinates, val board: BoardToSend, val eaten: Boolean, val completed: Boolean)

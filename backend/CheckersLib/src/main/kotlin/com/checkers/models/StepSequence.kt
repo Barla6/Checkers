@@ -8,8 +8,8 @@ import kotlinx.coroutines.Dispatchers
 class StepSequence(
     val startingBoard: Board,
     val steps: List<Coordinates>,
-    private val eaten: Boolean = false,
-    private val completed: Boolean = false
+    val eaten: Boolean = false,
+    val completed: Boolean = false
 ) {
     private val scope = CoroutineScope(Dispatchers.Default)
 
