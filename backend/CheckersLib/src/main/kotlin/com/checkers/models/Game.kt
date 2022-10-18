@@ -5,7 +5,7 @@ class Game(val player1: Player, val player2: Player) {
     var board: Board = Board()
     var turnCounter = 0
     var winner: Player? = null
-    val level: GameLevel? = null
+    var level: GameLevel? = null
 
     val isOver: Boolean
         get() = winner != null || turnCounter >= MAX_TURNS
@@ -53,5 +53,15 @@ class Game(val player1: Player, val player2: Player) {
         } else {
             println("game in progress...")
         }
+    }
+
+    fun playHumanPlayerTurn(sequence: List<Coordinates>, player: HumanPlayer) {
+        if (player != player1 && player != player2) throw Throwable()
+        board = player.playTurn(sequence, board)
+    }
+
+    suspend fun playAIPlayerTurn(player: AIPlayer) {
+        if (player != player1 && player != player2) throw Throwable()
+        board = player.playTurn(this) ?: return
     }
 }

@@ -4,21 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="924e5ac1-c188-49ec-b203-b490ee539d72" name="Changes" comment="change rendering board">
+    <list default="true" id="924e5ac1-c188-49ec-b203-b490ee539d72" name="Changes" comment="get possible moves request">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/StepSequence.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/StepSequence.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/management/AIPlayers.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/management/PlayersManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/management/PlayersManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/AIPlayer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/AIPlayer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Coordinates.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Coordinates.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Game.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Game.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/HumanPlayer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/HumanPlayer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/requestsClasses/NewGameRequestBody.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/requestsClasses/NewGameRequestBody.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/requestsClasses/PossibleMovesRequestBody.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/requestsClasses/PossibleMovesRequestBody.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/BoardToSend.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/BoardToSend.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/PossibleMoveToSend.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/PossibleMoveToSend.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/routing/Routing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/routing/Routing.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/src/API.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/src/API.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GamePage/Board/Board.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GamePage/Board/Board.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GamePage/Board/Square.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GamePage/Board/Square.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -298,7 +296,21 @@
       <option name="project" value="LOCAL" />
       <updated>1665913743906</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="get possible moves request">
+      <created>1666083926800</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1666083926800</updated>
+    </task>
+    <task id="LOCAL-00012" summary="get possible moves request">
+      <created>1666083960379</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1666083960379</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -319,7 +331,8 @@
     <MESSAGE value="save changes" />
     <MESSAGE value="change board to send format" />
     <MESSAGE value="change rendering board" />
-    <option name="LAST_COMMIT_MESSAGE" value="change rendering board" />
+    <MESSAGE value="get possible moves request" />
+    <option name="LAST_COMMIT_MESSAGE" value="get possible moves request" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -327,6 +340,7 @@
         <watch expression="PlayersManager.getPlayer(piece.playerId)" />
         <watch expression="playerId.toInt()" />
         <watch expression="resultBoard.getPieceByCoordinates(currentCoordinates)" />
+        <watch expression="PlayersManager.getPlayer(piece.playerId)" />
       </configuration>
     </watches-manager>
   </component>

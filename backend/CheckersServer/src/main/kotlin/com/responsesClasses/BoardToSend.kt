@@ -21,8 +21,9 @@ fun createBoard(boardToSend: BoardToSend): Board {
         row.map { piece ->
             if (piece == null) null
             else {
+                val player = PlayersManager.getPlayer(piece.playerId) ?: throw Throwable()
                 Piece(
-                    PlayersManager.getPlayer(piece.playerId)!!,
+                    player,
                     if (piece.type == PieceType.REGULAR.name) PieceType.REGULAR else PieceType.KING
                 )
             }

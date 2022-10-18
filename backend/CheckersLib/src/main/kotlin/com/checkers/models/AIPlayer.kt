@@ -10,6 +10,7 @@ class AIPlayer() : Player() {
     private val scope = CoroutineScope(Dispatchers.Default)
 
     var brain: NeuralNetwork by initOnce()
+    var level: GameLevel by initOnce()
 
     constructor(brain: NeuralNetwork) : this() {
         this.brain = brain
@@ -20,6 +21,7 @@ class AIPlayer() : Player() {
         this.brain = NeuralNetwork.ofLevel(level)
             .apply { this.name = name }
         this.name = name
+        this.level = level
     }
 
     suspend fun playTurn(game: Game): Board? {
