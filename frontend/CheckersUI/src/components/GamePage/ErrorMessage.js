@@ -2,8 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Card, CardActions, CardContent, Button } from "@mui/material";
 import styles from "./ErrorMessage.module.css";
+import { useHistory } from "react-router-dom";
 
 const ErrorMessageModal = (props) => {
+    const history = useHistory();
+
+    const goHomeHandler = () => {
+        history.push("/");
+    };
+
     return (
         <React.Fragment>
             <div className={styles.backdrop}></div>
@@ -17,7 +24,7 @@ const ErrorMessageModal = (props) => {
                     <CardActions className={styles["actions"]}>
                         <Button
                             className={styles["go-home-button"]}
-                            onClick={props.goHomeHandler}
+                            onClick={goHomeHandler}
                         >
                             Exit
                         </Button>
@@ -33,9 +40,7 @@ const ErrorMessage = (props) => {
         <React.Fragment>
             {props.open &&
                 ReactDOM.createPortal(
-                    <ErrorMessageModal
-                        goHomeHandler={props.goHomeHandler}
-                    ></ErrorMessageModal>,
+                    <ErrorMessageModal />,
                     document.getElementById("overlay-root")
                 )}
         </React.Fragment>

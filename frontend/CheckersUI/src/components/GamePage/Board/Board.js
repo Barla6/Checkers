@@ -5,6 +5,7 @@ import styles from "./Board.module.css";
 import { api } from "../../../API";
 import ErrorMessage from "../ErrorMessage";
 import { useHistory } from "react-router-dom";
+import WinAnimation from "../../Animations/WinAnimation/winAnimation";
 
 const equalCoordinates = (a, b) => {
     return a.row === b.row && a.col === b.col;
@@ -123,13 +124,10 @@ const Board = () => {
         }
     }, [chosenPieceCoordinates, turnData, board]);
 
-    const goHomeHandler = () => {
-        history.push("/");
-    };
-
     return (
         <div className={styles["board"]}>
-            <ErrorMessage open={showError} goHomeHandler={goHomeHandler} />
+            <WinAnimation open={true} />
+            <ErrorMessage open={showError} />
             <Grid className={styles["board-grid"]} container columns={8}>
                 {[...Array(8).keys()]
                     .map((rowIndex) => {
