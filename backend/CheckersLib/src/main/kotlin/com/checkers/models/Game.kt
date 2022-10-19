@@ -28,9 +28,9 @@ class Game(val player1: Player, val player2: Player) {
     fun getRandomPlayer() = listOf(player1, player2).random()
 
     fun getOppositePlayer(player: Player): Player? =
-        when(player) {
-            player1 -> player2
-            player2 -> player1
+        when(player.id) {
+            player1.id -> player2
+            player2.id -> player1
             else -> null
         }
 
@@ -56,12 +56,12 @@ class Game(val player1: Player, val player2: Player) {
     }
 
     fun playHumanPlayerTurn(sequence: List<Coordinates>, player: HumanPlayer) {
-        if (player != player1 && player != player2) throw Throwable()
+        if (player.id != player1.id && player.id != player2.id) throw Throwable()
         board = player.playTurn(sequence, board)
     }
 
     suspend fun playAIPlayerTurn(player: AIPlayer) {
-        if (player != player1 && player != player2) throw Throwable()
+        if (player.id != player1.id && player.id != player2.id) throw Throwable()
         board = player.playTurn(this) ?: return
     }
 }

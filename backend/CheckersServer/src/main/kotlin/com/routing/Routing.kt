@@ -111,11 +111,12 @@ fun Application.configureRouting() {
                 }
             }
 
-            game!!.playHumanPlayerTurn(requestBody.steps, humanPlayer!! as HumanPlayer)
-                .runCatching {
-                    call.respond(HttpStatusCode.Conflict, "player and game are not related")
-                    return@post
-                }
+            try {
+                game!!.playHumanPlayerTurn(requestBody.steps, humanPlayer!! as HumanPlayer)
+            } catch (t: Throwable) {
+                call.respond(HttpStatusCode.Conflict, "player and game are not related")
+                return@post
+            }
 
             val oppositePlayer = game.getOppositePlayer(humanPlayer).also {
                 if (it == null) {
@@ -127,7 +128,9 @@ fun Application.configureRouting() {
                 }
             }
 
-            game.playAIPlayerTurn(oppositePlayer!! as AIPlayer).runCatching {
+            try {
+                game.playAIPlayerTurn(oppositePlayer!! as AIPlayer)
+            } catch (t: Throwable) {
                 call.respond(HttpStatusCode.Conflict, "player and game are not related")
                 return@post
             }

@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="924e5ac1-c188-49ec-b203-b490ee539d72" name="Changes" comment="get possible moves request">
+    <list default="true" id="924e5ac1-c188-49ec-b203-b490ee539d72" name="Changes" comment="wip animations">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/AIPlayer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/AIPlayer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Coordinates.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Coordinates.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Game.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Game.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/HumanPlayer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/HumanPlayer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/requestsClasses/NewGameRequestBody.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/requestsClasses/NewGameRequestBody.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/requestsClasses/PossibleMovesRequestBody.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/requestsClasses/PossibleMovesRequestBody.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/BoardToSend.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/BoardToSend.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/routing/Routing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/routing/Routing.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/src/API.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/src/API.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GamePage/Board/Board.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GamePage/Board/Board.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -310,7 +305,35 @@
       <option name="project" value="LOCAL" />
       <updated>1666083960379</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="play turn request and error respond statuses">
+      <created>1666098043169</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1666098043169</updated>
+    </task>
+    <task id="LOCAL-00014" summary="play turn request and show error messages">
+      <created>1666098118834</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1666098118834</updated>
+    </task>
+    <task id="LOCAL-00015" summary="play turn request and show error messages">
+      <created>1666098159323</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1666098159323</updated>
+    </task>
+    <task id="LOCAL-00016" summary="wip animations">
+      <created>1666107633781</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1666107633781</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -332,7 +355,10 @@
     <MESSAGE value="change board to send format" />
     <MESSAGE value="change rendering board" />
     <MESSAGE value="get possible moves request" />
-    <option name="LAST_COMMIT_MESSAGE" value="get possible moves request" />
+    <MESSAGE value="play turn request and error respond statuses" />
+    <MESSAGE value="play turn request and show error messages" />
+    <MESSAGE value="wip animations" />
+    <option name="LAST_COMMIT_MESSAGE" value="wip animations" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -341,6 +367,11 @@
         <watch expression="playerId.toInt()" />
         <watch expression="resultBoard.getPieceByCoordinates(currentCoordinates)" />
         <watch expression="PlayersManager.getPlayer(piece.playerId)" />
+        <watch expression="player.id != player1.id" />
+        <watch expression="player.playTurn(sequence, board)" />
+        <watch expression="player.id != player1.id &amp;&amp; player.id != player2.id" />
+        <watch expression="currentBoard.executeStep(startCoordinates, endCoordinates)" />
+        <watch expression="sequence.zipWithNext()&#10;            .fold(board.clone()) { currentBoard, (startCoordinates, endCoordinates) -&gt;&#10;                currentBoard.executeStep(startCoordinates, endCoordinates)&#10;            }" />
       </configuration>
     </watches-manager>
   </component>
