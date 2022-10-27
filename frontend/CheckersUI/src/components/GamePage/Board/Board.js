@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import { Grid } from "@mui/material";
 import Square from "./Square";
 import styles from "./Board.module.css";
 import { api } from "../../../API";
 import ErrorMessage from "../ErrorMessage";
-import { useHistory } from "react-router-dom";
 import WinAnimation from "../../Animations/WinAnimation/winAnimation";
 
 const equalCoordinates = (a, b) => {
@@ -15,25 +14,79 @@ const getPiece = (board, coordinates) => {
     return board[coordinates.row][coordinates.col];
 };
 
+const gameDataReducer = (state, action) => {
+    switch (action.type) {
+        case "PLAY_TURN":
+            return {
+                board: action.value.board,
+                chosenPieceCoordinates: { row: null, col: null },
+                turnData: {
+                    progress: [],
+                    eaten: false,
+                    completed: false,
+                },
+            };
+        case "CHOOSE_PIECE":
+            return {
+                board: action.value.board,
+                chosenPieceCoordinates: action.value.chosenPieceCoordinates,
+                turnData: {
+                    progress: [action.value.chosenPieceCoordinates],
+                    eaten: false,
+                    completed: false,
+                },
+            };
+
+        case "STEP":
+            const lastCoordinatesInProgress =
+                state.turnData.progress[state.turnData.progress.length - 1];
+            if (
+                !equalCoordinates(
+                    lastCoordinatesInProgress,
+                    action.value.possibleStep.step
+                )
+            ) {
+                state.turnData.progress.push(action.value.possibleStep.step);
+            }
+            return {
+                board: action.value.possibleStep.board,
+                chosenPieceCoordinates: action.value.possibleStep.step,
+                turnData: {
+                    progress: state.turnData.progress,
+                    eaten: action.value.possibleStep.eaten,
+                    completed: action.value.possibleStep.completed,
+                },
+            };
+        default:
+            return {
+                board: action.value.board,
+                chosenPieceCoordinates: { row: null, col: null },
+                turnData: {
+                    progress: [],
+                    eaten: false,
+                    completed: false,
+                },
+            };
+    }
+};
+
 const Board = () => {
     const boardData = JSON.parse(localStorage.getItem("boardData"));
 
-    const [board, setBoard] = useState(boardData.board);
-    const [chosenPieceCoordinates, setChosenPieceCoordinates] = useState({
-        col: null,
-        row: null,
-    });
-    const [turnData, setTurnData] = useState({
-        progress: [],
-        eaten: false,
-        completed: false,
+    const [gameData, dispatchGameData] = useReducer(gameDataReducer, {
+        board: boardData.board,
+        chosenPieceCoordinates: { row: null, col: null },
+        turnData: {
+            progress: [],
+            eaten: false,
+            completed: false,
+        },
     });
     const [possibleSteps, setPossibleSteps] = useState([]);
     const [showError, setShowError] = useState(false);
-    const history = useHistory();
 
     const isChosenCoordinates = (coordinates) => {
-        return equalCoordinates(chosenPieceCoordinates, coordinates);
+        return equalCoordinates(gameData.chosenPieceCoordinates, coordinates);
     };
 
     const isMyPiece = (piece) => {
@@ -49,52 +102,43 @@ const Board = () => {
     };
     const squareClickHandler = async (coordinates) => {
         const possibleStep = getPossibleStep(coordinates);
-        const piece = getPiece(board, coordinates);
-        if (isChosenCoordinates(coordinates) && turnData.progress.length >= 2) {
-            const newBoard = await api.playTurn(turnData.progress);
+        const piece = getPiece(gameData.board, coordinates);
+        if (
+            isChosenCoordinates(coordinates) &&
+            gameData.turnData.progress.length >= 2
+        ) {
+            const newBoard = await api.playTurn(gameData.turnData.progress);
             if (!newBoard) {
                 setShowError(true);
             } else {
-                setBoard(newBoard);
-                boardData.board = newBoard;
-                localStorage.setItem("boardData", JSON.stringify(boardData));
-                setChosenPieceCoordinates({});
-                setTurnData({
-                    progress: [],
-                    eaten: false,
-                    completed: false,
+                dispatchGameData({
+                    type: "PLAY_TURN",
+                    value: {
+                        board: newBoard,
+                    },
                 });
             }
         } else if (isMyPiece(piece)) {
-            setChosenPieceCoordinates(coordinates);
-            setBoard(boardData.board);
-            setTurnData({
-                progress: [coordinates],
-                eaten: false,
-                completed: false,
+            dispatchGameData({
+                type: "CHOOSE_PIECE",
+                value: {
+                    board: boardData.board,
+                    chosenPieceCoordinates: coordinates,
+                },
             });
         } else if (possibleStep) {
-            setChosenPieceCoordinates(possibleStep.step);
-            setBoard(possibleStep.board);
-            setTurnData((prevState) => {
-                const lastCoordinatesInProgress =
-                    prevState.progress[prevState.progress.length - 1];
-                if (!equalCoordinates(lastCoordinatesInProgress, coordinates)) {
-                    prevState.progress.push(coordinates);
-                }
-                return {
-                    eaten: possibleStep.eaten,
-                    completed: possibleStep.completed,
-                    progress: prevState.progress,
-                };
+            dispatchGameData({
+                type: "STEP",
+                value: {
+                    possibleStep,
+                },
             });
         } else {
-            setChosenPieceCoordinates({});
-            setBoard(boardData.board);
-            setTurnData({
-                progress: [],
-                eaten: false,
-                completed: false,
+            dispatchGameData({
+                type: "DEFAULT",
+                value: {
+                    board: boardData.board,
+                },
             });
         }
     };
@@ -102,9 +146,9 @@ const Board = () => {
     useEffect(() => {
         const getPossibleMoves = async () => {
             const fetchedPossibleMoves = await api.getPossibleMoves(
-                board,
-                chosenPieceCoordinates,
-                turnData.eaten
+                gameData.board,
+                gameData.chosenPieceCoordinates,
+                gameData.turnData.eaten
             );
             if (!fetchedPossibleMoves) {
                 setShowError(true);
@@ -113,20 +157,20 @@ const Board = () => {
             }
         };
         if (
-            chosenPieceCoordinates.row != null &&
-            chosenPieceCoordinates.col != null &&
-            getPiece(board, chosenPieceCoordinates) &&
-            !turnData.completed
+            gameData.chosenPieceCoordinates.row != null &&
+            gameData.chosenPieceCoordinates.col != null &&
+            getPiece(gameData.board, gameData.chosenPieceCoordinates) &&
+            !gameData.turnData.completed
         ) {
             getPossibleMoves();
         } else {
             setPossibleSteps([]);
         }
-    }, [chosenPieceCoordinates, turnData, board]);
+    }, [gameData]);
 
     return (
         <div className={styles["board"]}>
-            <WinAnimation open={true} />
+            <WinAnimation open={false} />
             <ErrorMessage open={showError} />
             <Grid className={styles["board-grid"]} container columns={8}>
                 {[...Array(8).keys()]
@@ -150,12 +194,12 @@ const Board = () => {
                                     <Square
                                         square={{
                                             coordinates,
-                                            piece: board[coordinates.row][
-                                                coordinates.col
-                                            ],
+                                            piece: gameData.board[
+                                                coordinates.row
+                                            ][coordinates.col],
                                         }}
                                         chosenPiece={equalCoordinates(
-                                            chosenPieceCoordinates,
+                                            gameData.chosenPieceCoordinates,
                                             coordinates
                                         )}
                                         squareClickHandler={squareClickHandler}
