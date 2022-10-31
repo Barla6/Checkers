@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="924e5ac1-c188-49ec-b203-b490ee539d72" name="Changes" comment="fix bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Game.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Game.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/routing/Routing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/routing/Routing.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GamePage/Board/Board.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GamePage/Board/Board.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,6 +75,7 @@
       <list>
         <option value="Kotlin Enum" />
         <option value="Kotlin Object" />
+        <option value="Class" />
         <option value="Kotlin Class" />
       </list>
     </option>

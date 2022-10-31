@@ -58,10 +58,16 @@ class Game(val player1: Player, val player2: Player) {
     fun playHumanPlayerTurn(sequence: List<Coordinates>, player: HumanPlayer) {
         if (player.id != player1.id && player.id != player2.id) throw Throwable()
         board = player.playTurn(sequence, board)
+        checkForWinner()
     }
 
     suspend fun playAIPlayerTurn(player: AIPlayer) {
         if (player.id != player1.id && player.id != player2.id) throw Throwable()
-        board = player.playTurn(this) ?: return
+        board = player.playTurn(this).also {
+            if (it == null) {
+                winner = this.getOppositePlayer(player)
+            }
+        } ?: return
+        checkForWinner()
     }
 }

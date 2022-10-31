@@ -6,10 +6,7 @@ import com.management.PlayersManager
 import com.requestsClasses.NewGameRequestBody
 import com.requestsClasses.PlayTurnRequestBody
 import com.requestsClasses.PossibleMovesRequestBody
-import com.responsesClasses.NewGameResponse
-import com.responsesClasses.PossibleMoveToSend
-import com.responsesClasses.createBoard
-import com.responsesClasses.createBoardToSend
+import com.responsesClasses.*
 import io.ktor.http.*
 import io.ktor.server.routing.*
 import io.ktor.server.application.*
@@ -135,8 +132,11 @@ fun Application.configureRouting() {
                 return@post
             }
 
-            val response = createBoardToSend(game.board)
-
+//            val response = createBoardToSend(game.board)
+            val response = PlayTurnResponse(
+                createBoardToSend(game.board),
+                game.winner?.id?.toString()
+            )
             call.respond(response)
         }
     }

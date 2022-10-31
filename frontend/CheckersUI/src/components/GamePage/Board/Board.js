@@ -84,6 +84,7 @@ const Board = () => {
     });
     const [possibleSteps, setPossibleSteps] = useState([]);
     const [showError, setShowError] = useState(false);
+    const [winner, setWinner] = useState(null);
 
     const isChosenCoordinates = (coordinates) => {
         return equalCoordinates(gameData.chosenPieceCoordinates, coordinates);
@@ -107,16 +108,19 @@ const Board = () => {
             isChosenCoordinates(coordinates) &&
             gameData.turnData.progress.length >= 2
         ) {
-            const newBoard = await api.playTurn(gameData.turnData.progress);
-            if (!newBoard) {
+            const response = await api.playTurn(gameData.turnData.progress);
+            if (!response) {
                 setShowError(true);
             } else {
                 dispatchGameData({
                     type: "PLAY_TURN",
                     value: {
-                        board: newBoard,
+                        board: response.board,
                     },
                 });
+                boardData.board = response.board;
+                localStorage.setItem("boardData", JSON.stringify(boardData));
+                setWinner(response.winner);
             }
         } else if (isMyPiece(piece)) {
             dispatchGameData({
@@ -168,9 +172,11 @@ const Board = () => {
         }
     }, [gameData]);
 
+    debugger;
+
     return (
         <div className={styles["board"]}>
-            <WinAnimation open={false} />
+            <WinAnimation open={winner === localStorage.getItem("playerId")} />
             <ErrorMessage open={showError} />
             <Grid className={styles["board-grid"]} container columns={8}>
                 {[...Array(8).keys()]
