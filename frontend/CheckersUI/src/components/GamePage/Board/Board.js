@@ -5,6 +5,7 @@ import styles from "./Board.module.css";
 import { api } from "../../../API";
 import ErrorMessage from "../ErrorMessage";
 import WinAnimation from "../../Animations/WinAnimation/winAnimation";
+import LostAnimation from "../../Animations/LostAnimation/lostAnimation";
 
 const equalCoordinates = (a, b) => {
     return a.row === b.row && a.col === b.col;
@@ -121,6 +122,7 @@ const Board = () => {
                 boardData.board = response.board;
                 localStorage.setItem("boardData", JSON.stringify(boardData));
                 setWinner(response.winner);
+                console.log(winner);
             }
         } else if (isMyPiece(piece)) {
             dispatchGameData({
@@ -172,11 +174,12 @@ const Board = () => {
         }
     }, [gameData]);
 
-    debugger;
-
     return (
         <div className={styles["board"]}>
             <WinAnimation open={winner === localStorage.getItem("playerId")} />
+            <LostAnimation
+                open={winner && winner !== localStorage.getItem("playerId")}
+            />
             <ErrorMessage open={showError} />
             <Grid className={styles["board-grid"]} container columns={8}>
                 {[...Array(8).keys()]

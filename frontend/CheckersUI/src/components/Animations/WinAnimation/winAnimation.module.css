@@ -7,49 +7,56 @@
     width: 100%;
     height: 100vh;
     z-index: 10;
-    background: rgba(0, 0, 0, 0.5);
+    -webkit-animation: dark-background 2s linear 0s forwards;
+}
+@keyframes dark-background {
+    0% {
+        background: rgba(0, 0, 0, 0);
+    }
+    100% {
+        background: rgba(0, 0, 0, 0.8);
+    }
 }
 
 .text {
     position: fixed;
-    position: absolute;
-    left: 50%;
-    top: 45%;
-    transform: translate(-50%, -50%);
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
     z-index: 100;
     display: flex;
     flex-direction: column;
-    font-family: "Suez One", serif;
+    font-family: "Suez One", serif !important;
     color: rgb(255, 214, 118);
     -webkit-text-stroke: 2px rgb(0, 65, 100);
     text-align: center;
+    animation: 2s forwards 0s bigger;
 }
 
-.text .small-text {
-    font-size: 10vw;
-}
-
-.text .big-text {
-    font-size: 15vw;
-}
-
-.exit-button,
-.exit-button:hover {
-    position: fixed;
-    position: absolute;
+.exit-button {
+    position: absolute !important;
     left: 50%;
     top: 85%;
     transform: translate(-50%, -50%);
     z-index: 100;
-    font-family: "Suez One", serif;
+    font-family: "Suez One", serif !important;
     text-align: center;
-    width: 8vw;
-    height: 4vw;
-    background-color: rgb(255, 214, 118);
-    font-size: 2vw;
-    border: 2px solid rgb(0, 65, 100);
+    width: 8vw !important;
+    height: 4vw !important;
+    background-color: rgb(255, 214, 118) !important;
+    font-size: 2vw !important;
+    border: 2px solid rgb(0, 65, 100) !important;
 }
 
 .exit-button:hover {
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes bigger {
+    0% {
+        font-size: 0vw;
+    }
+    100% {
+        font-size: 12vw;
+    }
 }

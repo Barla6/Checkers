@@ -3,6 +3,7 @@ import styles from "./winAnimation.module.css";
 import ReactDOM from "react-dom";
 import { Button } from "@mui/material";
 import { useHistory } from "react-router-dom";
+import TextAnimation from "../TextAnimation/TextAnimation";
 
 const WinAnimationComponent = () => {
     const history = useHistory();
@@ -14,7 +15,6 @@ const WinAnimationComponent = () => {
         <React.Fragment>
             <div className={styles.backdrop}></div>
             <div className={styles["text"]}>
-                <div className={styles["small-text"]}>you are the</div>
                 <div className={styles["big-text"]}>WINNER</div>
             </div>
             <Button
@@ -34,7 +34,7 @@ const WinAnimationComponent = () => {
                     "z-index": "100",
                     position: "fixed",
                     top: "65%",
-                    left: "25%",
+                    left: "15%",
                     transform: "translate(-50%, -50%)",
                 }}
             ></lord-icon>
@@ -49,7 +49,7 @@ const WinAnimationComponent = () => {
                     "z-index": "100",
                     position: "fixed",
                     top: "65%",
-                    left: "75%",
+                    left: "85%",
                     transform: "translate(-50%, -50%) scaleX(-1)",
                 }}
             ></lord-icon>

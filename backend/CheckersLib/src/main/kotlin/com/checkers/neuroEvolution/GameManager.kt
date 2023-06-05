@@ -32,8 +32,12 @@ class GameManager(private val population: Population) {
     private suspend fun createAndRunGame(brain1: NeuralNetwork, brain2: NeuralNetwork): Game? {
 
         if (brain1 == brain2) return null
-        val player1 = AIPlayer(brain1)
-        val player2 = AIPlayer(brain2)
+        val player1 = AIPlayer(brain1).apply {
+            id = 1
+        }
+        val player2 = AIPlayer(brain2).apply {
+            id = 2
+        }
         val game = Game(player1, player2)
         GameRunner.runGame(game)
         progressBar.step()

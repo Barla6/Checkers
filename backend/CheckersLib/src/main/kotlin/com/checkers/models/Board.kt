@@ -71,7 +71,7 @@ class Board(
         }
 
     fun countPiecesOfPlayer(player: Player): Int =
-        countOnBoard { piece -> piece?.player == player }
+        countOnBoard { piece -> piece?.player?.id == player.id }
 
     // operations on board:
 

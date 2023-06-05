@@ -132,6 +132,7 @@ fun Application.configureRouting() {
                 return@post
             }
 
+            println(game.winner?.id?.toString())
 //            val response = createBoardToSend(game.board)
             val response = PlayTurnResponse(
                 createBoardToSend(game.board),

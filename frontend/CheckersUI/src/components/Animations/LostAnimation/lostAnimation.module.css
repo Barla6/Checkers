@@ -1,0 +1,73 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    -webkit-animation: dark-background 2s linear 0s forwards;
+}
+
+@keyframes dark-background {
+    0% {
+        background: rgba(0, 0, 0, 0);
+    }
+    100% {
+        background: rgba(0, 0, 0, 0.8);
+    }
+}
+
+.top-text,
+.bottom-text {
+    font-family: "Suez One", serif !important;
+    font-size: 12vw;
+    z-index: 100;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    -webkit-text-stroke: 2px white;
+}
+
+.top-text {
+    top: 40%;
+    animation: 2s ease-in-out 0s slideInFromLeft;
+}
+
+.bottom-text {
+    top: 60%;
+    animation: 2s ease-in-out 0s slideInFromRight;
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translate(-200%, -50%);
+    }
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translate(100%, -50%);
+    }
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+.exit-button {
+    position: absolute !important;
+    left: 50%;
+    top: 85%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    font-family: "Suez One", serif !important;
+    text-align: center;
+    width: 8vw !important;
+    height: 4vw !important;
+    background-color: black !important;
+    font-size: 2vw !important;
+    border: 2px solid white !important;
+    color: white !important;
+}
