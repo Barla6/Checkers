@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Piece.module.css";
 
 const Piece = (props) => {
-    const myPiece = props.piece.playerId === localStorage.getItem("playerId");
+    const myPiece = props.piece.playerId === Number(localStorage.getItem("playerId"));
     const king = props.piece.type === "KING";
 
     const getPieceIcon = () => {

@@ -7,7 +7,7 @@ const PlayerNameInput = (props) => {
             <input
                 className={styles["name-input"]}
                 variant="outlined"
-                placeholder="Enter your name"
+                placeholder="Nickname"
                 onChange={props.playerNameHandler}
                 maxLength={20}
             />

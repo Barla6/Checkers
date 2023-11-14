@@ -11,40 +11,57 @@ export const api = {
         return axios
             .post(`${serverURL}/new-game`, { level, playerName }, { headers })
             .then((response) => {
+                console.log(response.data)
                 return response.data;
             })
             .catch((err) => {
                 console.log(err);
             });
     },
-    getPossibleMoves: async (board, coordinates, eaten) => {
+    getPossibleMoves: async (board, coordinates, eaten, turnProgress) => {
         return axios
             .post(
                 `${serverURL}/possible-moves`,
-                { board, coordinates, eaten },
+                { board, coordinates, eaten, turnProgress },
                 { headers }
             )
             .then((response) => {
+                console.log(response.data)
                 return response.data;
             })
             .catch((err) => {
                 console.log(err);
             });
     },
-    playTurn: async (steps) => {
-        const gameId = localStorage.getItem("gameId");
-        const playerId = localStorage.getItem("playerId");
+    playTurn: async (turnProgress) => {
+        const gameId = Number(localStorage.getItem("gameId"));
+        const playerId = Number(localStorage.getItem("playerId"));
         return axios
             .post(
                 `${serverURL}/play-turn`,
-                { steps, gameId, playerId },
+                { turnProgress, gameId, playerId },
                 { headers }
-            )
-            .then((response) => {
-                return response.data;
+            ).then((response) => {
+                return response.data
             })
             .catch((err) => {
                 console.log(err);
             });
     },
+    getTurn: async  () => {
+        const gameId = Number(localStorage.getItem("gameId"));
+        const playerId = Number(localStorage.getItem("aiPlayerId"));
+        return axios
+            .post(`${serverURL}/get-turn`,
+                { gameId, playerId },
+                { headers }
+            )
+            .then((response) => {
+                console.log(response.data)
+                return response.data;
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
 };

@@ -54,14 +54,9 @@ const GameFormModal = (props) => {
                 setShowError(true);
             } else {
                 localStorage.setItem("gameId", gameData.gameId);
-                localStorage.setItem("playerId", gameData.playerId);
-                localStorage.setItem(
-                    "boardData",
-                    JSON.stringify({
-                        board: gameData.board,
-                        turnBoard: gameData.turnBoard,
-                    })
-                );
+                localStorage.setItem("playerId", gameData.humanPlayerId);
+                localStorage.setItem("aiPlayerId", gameData.aiPlayerId)
+                localStorage.setItem("board", JSON.stringify(gameData.board));
                 localStorage.setItem("gameLevel", gameLevel.value);
                 // TODO: MAYBE NOT
                 localStorage.setItem("gameType", gameType.value);

@@ -20,8 +20,7 @@ export const gameTypeReducer = (state, action) => {
 export const gameLevelReducer = (state, action) => {
     const validateGameLevel = (gameLevel, gameType = "computer_vs_player") => {
         if (gameType === "player_vs_player") return true;
-        else if (gameLevel != null) return true;
-        else return false;
+        else return gameLevel != null;
     };
 
     switch (action.type) {
