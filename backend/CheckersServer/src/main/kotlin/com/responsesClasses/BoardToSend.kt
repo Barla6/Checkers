@@ -11,7 +11,7 @@ fun createBoardToSend(board: Board): BoardToSend {
     return board.board.map { row ->
         row.map { piece ->
                 if (piece == null) null
-                else PieceToSend(piece.player.id.toString(), piece.type.name)
+                else PieceToSend(piece.player.id, piece.type.name)
         }.toList()
     }.toList()
 }

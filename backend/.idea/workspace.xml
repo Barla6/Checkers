@@ -7,31 +7,38 @@
     <list default="true" id="924e5ac1-c188-49ec-b203-b490ee539d72" name="Changes" comment="save changes">
       <change beforePath="$PROJECT_DIR$/../.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/Application.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/Application.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Board.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Board.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Game.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Game.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/neuroEvolution/Evolution.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/neuroEvolution/Evolution.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/neuroEvolution/GameManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/neuroEvolution/GameManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/management/GamesManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/management/GamesManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/management/PlayersManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/management/PlayersManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/requestsClasses/NewGameRequestBody.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/requestsClasses/NewGameRequestBody.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/requestsClasses/PlayTurnRequestBody.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/requestsClasses/PlayTurnRequestBody.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/requestsClasses/PossibleMovesRequestBody.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/requestsClasses/PossibleMovesRequestBody.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/BoardToSend.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/BoardToSend.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/NewGameResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/NewGameResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/PieceToSend.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/PieceToSend.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/PlayTurnResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/GetTurnResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/PossibleMoveToSend.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/responsesClasses/PossibleMoveToSend.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/routing/Routing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/CheckersServer/src/main/kotlin/com/routing/Routing.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildSrc/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/buildSrcjar-classes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/buildSrcjar-classes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/cacheable/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/cacheable/last-build.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/localstate/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/localstate/build-history.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/build/libs/buildSrc.jar" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/libs/buildSrc.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/build/pluginUnderTestMetadata/plugin-under-test-metadata.properties" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/pluginUnderTestMetadata/plugin-under-test-metadata.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/Animations/LostAnimation/lostAnimation.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/Animations/LostAnimation/lostAnimation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/Animations/LostAnimation/lostAnimation.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/Animations/LostAnimation/lostAnimation.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/Animations/WinAnimation/winAnimation.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/Animations/WinAnimation/winAnimation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/Animations/WinAnimation/winAnimation.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/Animations/WinAnimation/winAnimation.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/src/API.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/src/API.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GameForm/GameForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GameForm/GameForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GamePage/Board/Board.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GamePage/Board/Board.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GamePage/Board/Piece.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/CheckersUI/src/components/GamePage/Board/Piece.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,30 +69,7 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Checkers" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Checkers" type="f1a62948:ProjectNode" />
-                <item name="CheckersServer" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Checkers" type="f1a62948:ProjectNode" />
-                <item name="CheckersServer" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Checkers" type="f1a62948:ProjectNode" />
-                <item name="CheckersServer" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
@@ -121,6 +105,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2EiPg7F4frav44I910a1cDqlUDR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -133,13 +120,18 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "1.8",
     "ktor.last.update.timestamp": "1685878522867",
-    "last_opened_file_path": "C:/Users/barla/coding/Checkers/backend",
+    "last_opened_file_path": "C:/Users/barla/coding/KotDB",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.notifications",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -148,13 +140,13 @@
       <recent name="com.models" />
     </key>
   </component>
-  <component name="RunManager" selected="Kotlin.Evolution">
-    <configuration name="CanEatTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Kotlin.Server">
+    <configuration name="Tests in 'Checkers.CheckersLib.test' (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.checkers.CanEatTest&quot;" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -168,29 +160,7 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
-      <method v="2" />
-    </configuration>
-    <configuration name="CanStepTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.checkers.CanStepTest&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":CheckersLib:test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="Tests in 'Checkers.CheckersLib.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -212,7 +182,29 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="backend [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="backend:CheckersServer [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -234,7 +226,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
+      <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="Evolution" type="JetRunConfigurationType">
@@ -249,17 +241,26 @@
       <option name="MAIN_CLASS_NAME" value="com.ApplicationKt" />
       <module name="Checkers.CheckersServer.main" />
       <shortenClasspath name="NONE" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Gradle.Tests in 'Checkers.CheckersLib.test' (1)" />
+      <item itemvalue="Gradle.backend [build]" />
+      <item itemvalue="Gradle.backend:CheckersServer [clean]" />
+      <item itemvalue="Gradle.Tests in 'Checkers.CheckersLib.test'" />
+      <item itemvalue="Kotlin.Evolution" />
+      <item itemvalue="Kotlin.Server" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Kotlin.Server" />
+        <item itemvalue="Gradle.Tests in 'Checkers.CheckersLib.test' (1)" />
+        <item itemvalue="Gradle.backend [build]" />
         <item itemvalue="Gradle.backend:CheckersServer [clean]" />
         <item itemvalue="Gradle.Tests in 'Checkers.CheckersLib.test'" />
-        <item itemvalue="Gradle.CanStepTest" />
-        <item itemvalue="Gradle.CanEatTest" />
       </list>
     </recent_temporary>
   </component>
@@ -271,7 +272,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663075539740</updated>
-      <workItem from="1685877020379" duration="5454000" />
+      <workItem from="1685877020379" duration="6131000" />
+      <workItem from="1688388101544" duration="330000" />
+      <workItem from="1688390270665" duration="31000" />
+      <workItem from="1698936515798" duration="39000" />
+      <workItem from="1698936714409" duration="454000" />
+      <workItem from="1699169687845" duration="92000" />
+      <workItem from="1699169868061" duration="19865000" />
+      <workItem from="1699863834747" duration="5514000" />
     </task>
     <task id="LOCAL-00001" summary="...">
       <created>1663076879181</created>
@@ -406,7 +414,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667202150001</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="save changes">
+      <created>1685950809204</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1685950809204</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -438,20 +453,28 @@
     <option name="LAST_COMMIT_MESSAGE" value="save changes" />
   </component>
   <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="JetRunConfigurationType">
-        <watch expression="PlayersManager.getPlayer(piece.playerId)" />
-        <watch expression="playerId.toInt()" />
-        <watch expression="resultBoard.getPieceByCoordinates(currentCoordinates)" />
-        <watch expression="PlayersManager.getPlayer(piece.playerId)" />
-        <watch expression="player.id != player1.id" />
-        <watch expression="player.playTurn(sequence, board)" />
-        <watch expression="player.id != player1.id &amp;&amp; player.id != player2.id" />
-        <watch expression="currentBoard.executeStep(startCoordinates, endCoordinates)" />
-        <watch expression="sequence.zipWithNext()&#10;            .fold(board.clone()) { currentBoard, (startCoordinates, endCoordinates) -&gt;&#10;                currentBoard.executeStep(startCoordinates, endCoordinates)&#10;            }" />
-        <watch expression="game.board" language="kotlin" />
-      </configuration>
-    </watches-manager>
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="kotlin-line">
+          <url>file://$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Game.kt</url>
+          <line>73</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint type="kotlin-line">
+          <url>file://$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/Game.kt</url>
+          <line>74</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint type="kotlin-line">
+          <url>file://$PROJECT_DIR$/CheckersLib/src/main/kotlin/com/checkers/models/AIPlayer.kt</url>
+          <line>27</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

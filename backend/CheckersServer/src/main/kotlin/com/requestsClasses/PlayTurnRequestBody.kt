@@ -2,10 +2,9 @@ package com.requestsClasses
 
 import com.checkers.models.Coordinates
 
-data class PlayTurnRequestBody(val steps: List<Coordinates>, val gameId: String, val playerId: String) {
-    fun isValid(): Boolean {
-        return steps != null
-                && steps.size >= 2
+data class PlayTurnRequestBody(val turnProgress: List<Coordinates>, val gameId: Int, val playerId: Int) : RequestBody() {
+    override fun isValid(): Boolean {
+        return turnProgress != null
                 && gameId != null
                 && playerId != null
     }

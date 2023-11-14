@@ -1,7 +1,7 @@
 package com.responsesClasses
 
-data class NewGameResponse(val gameId: String,
-                           val playerId: String,
-                           val turnBoard: Boolean,
+data class NewGameResponse(val gameId: Int,
+                           val humanPlayerId: Int,
+                           val aiPlayerId: Int,
                            val board: BoardToSend
 )

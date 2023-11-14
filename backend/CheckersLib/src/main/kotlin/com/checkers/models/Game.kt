@@ -16,12 +16,22 @@ class Game(val player1: Player, val player2: Player) {
     }
 
     init {
-        player1.apply {
-            playerDirection = PlayerDirection.UPWARDS
+        if (player1 is AIPlayer) {
+            player1.apply {
+                playerDirection = PlayerDirection.DOWNWARDS
+            }
+            player2.apply {
+                playerDirection = PlayerDirection.UPWARDS
+            }
+        } else {
+            player1.apply {
+                playerDirection = PlayerDirection.UPWARDS
+            }
+            player2.apply {
+                playerDirection = PlayerDirection.DOWNWARDS
+            }
         }
-        player2.apply {
-            playerDirection = PlayerDirection.DOWNWARDS
-        }
+
         board.initGameBoard(player1, player2)
     }
 
@@ -33,7 +43,6 @@ class Game(val player1: Player, val player2: Player) {
             player2.id -> player1
             else -> null
         }
-
 
     fun checkForWinner() {
         winner =  when {
