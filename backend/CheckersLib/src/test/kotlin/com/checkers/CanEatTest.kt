@@ -1,6 +1,11 @@
 package com.checkers
 
-import com.checkers.models.*
+import com.checkers.models.Board
+import com.checkers.models.Coordinate
+import com.checkers.models.PieceColor
+import com.checkers.models.piece.King
+import com.checkers.models.piece.Pawn
+import com.checkers.models.piece.Piece
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito
@@ -9,29 +14,16 @@ import kotlin.test.assertTrue
 
 internal class CanEatTest {
 
-    private lateinit var friendlyPlayer: Player
-    private lateinit var enemyPlayer: Player
-    private lateinit var friendlyKing: Piece
-    private lateinit var friendlyPiece: Piece
-    private lateinit var enemyPiece: Piece
-    private lateinit var stepSequence: StepSequence
-    private lateinit var spyStepSequence: StepSequence
-    private lateinit var board: Board
+    private val myPawn = Pawn(PieceColor.WHITE)
+    private val myKing = King(PieceColor.WHITE)
+    private val board = Mockito.spy(Board())
+
+    private val enemyPiece = Pawn(PieceColor.BLACK)
+    private val friendlyPiece = Pawn(PieceColor.WHITE)
 
     @BeforeEach
     fun init() {
-        friendlyPlayer = HumanPlayer("friend").apply {
-            playerDirection = PlayerDirection.DOWNWARDS
-        }
-        enemyPlayer = HumanPlayer("enemy").apply {
-            playerDirection = PlayerDirection.UPWARDS
-        }
-        friendlyPiece = Piece(friendlyPlayer)
-        friendlyKing = Piece(friendlyPlayer, PieceType.KING)
-        enemyPiece = Piece(enemyPlayer)
-        stepSequence = StepSequence(Board(), listOf())
-        spyStepSequence = Mockito.spy(stepSequence)
-        board = Board()
+
     }
 
     /**
@@ -40,18 +32,16 @@ internal class CanEatTest {
      */
     @Test
     fun canEat_regularPiece_yes() {
-        val eatingPiece = friendlyPiece
-        val pieceToEat = enemyPiece
-        val eatingPieceCoordinates = Coordinates(1, 3)
-        val pieceToEatCoordinates = Coordinates(2, 4)
 
-        board.placePiece(eatingPiece, eatingPieceCoordinates)
-        board.placePiece(pieceToEat, pieceToEatCoordinates)
+        val landingCoordinate = Coordinate(3, 4)
+        val nextCoordinate = Coordinate(2, 3)
+        val myCoordinate = Coordinate(1, 2)
 
-        Mockito.doReturn(eatingPieceCoordinates).`when`(spyStepSequence).currentCoordinates
-        Mockito.doReturn(board).`when`(spyStepSequence).resultBoard
+        Mockito.doReturn(myPawn).`when`(board)[myCoordinate]
+        Mockito.doReturn(enemyPiece).`when`(board)[nextCoordinate]
+        Mockito.doReturn(null).`when`(board)[landingCoordinate]
 
-      val result = spyStepSequence.canEat(StepDirection.DOWN_RIGHT)
+        val result = myPawn.canEat(nextCoordinate, landingCoordinate, board)
 
         assertTrue(result)
     }
@@ -62,15 +52,15 @@ internal class CanEatTest {
      */
     @Test
     fun canEat_regularPiece_nothingToEat_no() {
-        val eatingPiece = friendlyPiece
-        val eatingPieceCoordinates = Coordinates(1, 3)
+        val landingCoordinate = Coordinate(3, 4)
+        val nextCoordinate = Coordinate(2, 3)
+        val myCoordinate = Coordinate(1, 2)
 
-        board.placePiece(eatingPiece, eatingPieceCoordinates)
+        Mockito.doReturn(myPawn).`when`(board)[myCoordinate]
+        Mockito.doReturn(null).`when`(board)[nextCoordinate]
+        Mockito.doReturn(null).`when`(board)[landingCoordinate]
 
-        Mockito.doReturn(eatingPieceCoordinates).`when`(spyStepSequence).currentCoordinates
-        Mockito.doReturn(board).`when`(spyStepSequence).resultBoard
-
-        val result = spyStepSequence.canEat(StepDirection.DOWN_RIGHT)
+        val result = myPawn.canEat(nextCoordinate, landingCoordinate, board)
 
         assertFalse(result)
     }
@@ -81,18 +71,15 @@ internal class CanEatTest {
      */
     @Test
     fun canEat_regularPiece_friendlyPieceToEat_no() {
-        val eatingPiece = friendlyPiece
-        val pieceToEat = friendlyPiece
-        val eatingPieceCoordinates = Coordinates(1, 3)
-        val pieceToEatCoordinates = Coordinates(2, 4)
+        val landingCoordinate = Coordinate(3, 4)
+        val nextCoordinate = Coordinate(2, 3)
+        val myCoordinate = Coordinate(1, 2)
 
-        board.placePiece(eatingPiece, eatingPieceCoordinates)
-        board.placePiece(pieceToEat, pieceToEatCoordinates)
+        Mockito.doReturn(myPawn).`when`(board)[myCoordinate]
+        Mockito.doReturn(friendlyPiece).`when`(board)[nextCoordinate]
+        Mockito.doReturn(null).`when`(board)[landingCoordinate]
 
-        Mockito.doReturn(eatingPieceCoordinates).`when`(spyStepSequence).currentCoordinates
-        Mockito.doReturn(board).`when`(spyStepSequence).resultBoard
-
-        val result = spyStepSequence.canEat(StepDirection.DOWN_RIGHT)
+        val result = myPawn.canEat(nextCoordinate, landingCoordinate, board)
 
         assertFalse(result)
     }
@@ -103,62 +90,15 @@ internal class CanEatTest {
      */
     @Test
     fun canEat_regularPiece_landingPlaceTaken_no() {
-        val eatingPiece = friendlyPiece
-        val pieceToEat = enemyPiece
-        val pieceInLandingPlace = friendlyPiece
-        val eatingPieceCoordinates = Coordinates(1, 3)
-        val pieceToEatCoordinates = Coordinates(2, 4)
-        val landingPlace = Coordinates(3, 5)
+        val landingCoordinate = Coordinate(3, 4)
+        val nextCoordinate = Coordinate(2, 3)
+        val myCoordinate = Coordinate(1, 2)
 
-        board.placePiece(eatingPiece, eatingPieceCoordinates)
-        board.placePiece(pieceToEat, pieceToEatCoordinates)
-        board.placePiece(pieceInLandingPlace, landingPlace)
+        Mockito.doReturn(myPawn).`when`(board)[myCoordinate]
+        Mockito.doReturn(enemyPiece).`when`(board)[nextCoordinate]
+        Mockito.doReturn(friendlyPiece).`when`(board)[landingCoordinate]
 
-        Mockito.doReturn(eatingPieceCoordinates).`when`(spyStepSequence).currentCoordinates
-        Mockito.doReturn(board).`when`(spyStepSequence).resultBoard
-
-        val result = spyStepSequence.canEat(StepDirection.DOWN_RIGHT)
-
-        assertFalse(result)
-    }
-
-    /**
-     * check if regular piece can eat in direction that leads outside the board.
-     * EXPECTATION: no
-     */
-    @Test
-    fun canEat_regularPiece_eatingPlaceOutOfBoard_no() {
-        val eatingPiece = friendlyPiece
-        val eatingPieceCoordinates = Coordinates(0, 2)
-
-        board.placePiece(eatingPiece, eatingPieceCoordinates)
-
-        Mockito.doReturn(eatingPieceCoordinates).`when`(spyStepSequence).currentCoordinates
-        Mockito.doReturn(board).`when`(spyStepSequence).resultBoard
-
-        val result = spyStepSequence.canEat(StepDirection.UP_RIGHT)
-
-        assertFalse(result)
-    }
-
-    /**
-     * check if regular piece can eat enemy piece next to it, when the landing place is outside the board.
-     * EXPECTATION: no
-     */
-    @Test
-    fun canEat_regularPiece_landingPlaceOutOfBoard_no() {
-        val eatingPiece = friendlyPiece
-        val pieceToEat = enemyPiece
-        val eatingPieceCoordinates = Coordinates(1, 2)
-        val pieceToEatCoordinates = Coordinates(0,1)
-
-        board.placePiece(eatingPiece, eatingPieceCoordinates)
-        board.placePiece(pieceToEat, pieceToEatCoordinates)
-
-        Mockito.doReturn(eatingPieceCoordinates).`when`(spyStepSequence).currentCoordinates
-        Mockito.doReturn(board).`when`(spyStepSequence).resultBoard
-
-        val result = spyStepSequence.canEat(StepDirection.UP_LEFT)
+        val result = myPawn.canEat(nextCoordinate, landingCoordinate, board)
 
         assertFalse(result)
     }
@@ -169,42 +109,38 @@ internal class CanEatTest {
      */
     @Test
     fun canEat_king_simpleEating_yes() {
-        val eatingPiece = friendlyKing
-        val pieceToEat = enemyPiece
-        val eatingPieceCoordinates = Coordinates(1, 2)
-        val pieceToEatCoordinates = Coordinates(2,3)
-        val landingPlace = Coordinates(3,4)
+        val landingCoordinate = Coordinate(3, 4)
+        val nextCoordinate = Coordinate(2, 3)
+        val myCoordinate = Coordinate(1, 2)
 
-        board.placePiece(eatingPiece, eatingPieceCoordinates)
-        board.placePiece(pieceToEat, pieceToEatCoordinates)
+        Mockito.doReturn(myKing).`when`(board)[myCoordinate]
+        Mockito.doReturn(enemyPiece).`when`(board)[nextCoordinate]
+        Mockito.doReturn(null).`when`(board)[landingCoordinate]
 
-        Mockito.doReturn(eatingPieceCoordinates).`when`(spyStepSequence).currentCoordinates
-        Mockito.doReturn(board).`when`(spyStepSequence).resultBoard
+        val piecesInRange = listOf(enemyPiece)
 
-        val result = spyStepSequence.canEat(StepDirection.DOWN_RIGHT, landingPlace)
+        val result = myKing.canEat(landingCoordinate, board, piecesInRange)
 
         assertTrue(result)
     }
 
     /**
-     * check if king piece can eat enemy piece from distant.
+     * check if king piece can eat enemy piece distant from it.
      * EXPECTATION: yes
      */
     @Test
-    fun canEat_king_distantEating_yes() {
-        val eatingPiece = friendlyKing
-        val pieceToEat = enemyPiece
-        val eatingPieceCoordinates = Coordinates(1, 2)
-        val pieceToEatCoordinates = Coordinates(4,5)
-        val landingPlace = Coordinates(6, 7)
+    fun canEat_king_simpleEatingFromDistance_yes() {
+        val landingCoordinate = Coordinate(5, 6)
+        val nextCoordinate = Coordinate(4, 5)
+        val myCoordinate = Coordinate(1, 2)
 
-        board.placePiece(eatingPiece, eatingPieceCoordinates)
-        board.placePiece(pieceToEat, pieceToEatCoordinates)
+        Mockito.doReturn(myKing).`when`(board)[myCoordinate]
+        Mockito.doReturn(enemyPiece).`when`(board)[nextCoordinate]
+        Mockito.doReturn(null).`when`(board)[landingCoordinate]
 
-        Mockito.doReturn(eatingPieceCoordinates).`when`(spyStepSequence).currentCoordinates
-        Mockito.doReturn(board).`when`(spyStepSequence).resultBoard
+        val piecesInRange = listOf(enemyPiece)
 
-        val result = spyStepSequence.canEat(StepDirection.DOWN_RIGHT, landingPlace)
+        val result = myKing.canEat(landingCoordinate, board, piecesInRange)
 
         assertTrue(result)
     }
@@ -215,15 +151,15 @@ internal class CanEatTest {
      */
     @Test
     fun canEat_king_nothingToEat_no() {
-        val eatingPiece = friendlyKing
-        val eatingPieceCoordinates = Coordinates(1, 2)
+        val landingCoordinate = Coordinate(5, 6)
+        val myCoordinate = Coordinate(1, 2)
 
-        board.placePiece(eatingPiece, eatingPieceCoordinates)
+        Mockito.doReturn(myKing).`when`(board)[myCoordinate]
+        Mockito.doReturn(null).`when`(board)[landingCoordinate]
 
-        Mockito.doReturn(eatingPieceCoordinates).`when`(spyStepSequence).currentCoordinates
-        Mockito.doReturn(board).`when`(spyStepSequence).resultBoard
+        val piecesInRange = listOf<Piece>()
 
-        val result = spyStepSequence.canEat(StepDirection.DOWN_RIGHT)
+        val result = myKing.canEat(landingCoordinate, board, piecesInRange)
 
         assertFalse(result)
     }
@@ -234,19 +170,17 @@ internal class CanEatTest {
      */
     @Test
     fun canEat_king_friendlyPieceToEat_no() {
-        val eatingPiece = friendlyKing
-        val pieceToEat = friendlyPiece
-        val eatingPieceCoordinates = Coordinates(1, 2)
-        val pieceToEatCoordinates = Coordinates(2,3)
-        val landingPlace = Coordinates(4, 5)
+        val landingCoordinate = Coordinate(5, 6)
+        val nextCoordinate = Coordinate(4, 5)
+        val myCoordinate = Coordinate(1, 2)
 
-        board.placePiece(eatingPiece, eatingPieceCoordinates)
-        board.placePiece(pieceToEat, pieceToEatCoordinates)
+        Mockito.doReturn(myKing).`when`(board)[myCoordinate]
+        Mockito.doReturn(friendlyPiece).`when`(board)[nextCoordinate]
+        Mockito.doReturn(null).`when`(board)[landingCoordinate]
 
-        Mockito.doReturn(eatingPieceCoordinates).`when`(spyStepSequence).currentCoordinates
-        Mockito.doReturn(board).`when`(spyStepSequence).resultBoard
+        val piecesInRange = listOf(friendlyPiece)
 
-        val result = spyStepSequence.canEat(StepDirection.DOWN_RIGHT, landingPlace)
+        val result = myKing.canEat(landingCoordinate, board, piecesInRange)
 
         assertFalse(result)
     }
@@ -257,22 +191,17 @@ internal class CanEatTest {
      */
     @Test
     fun canEat_king_piecesInTheWay_no() {
-        val eatingPiece = friendlyKing
-        val pieceToEat = enemyPiece
-        val pieceInTheWay = friendlyPiece
-        val eatingPieceCoordinates = Coordinates(1, 2)
-        val pieceInTheWayCoordinates = Coordinates(3, 4)
-        val pieceToEatCoordinates = Coordinates(4,5)
-        val landingPlace = Coordinates(5, 6)
+        val landingCoordinate = Coordinate(5, 6)
+        val myCoordinate = Coordinate(1, 2)
 
-        board.placePiece(eatingPiece, eatingPieceCoordinates)
-        board.placePiece(pieceToEat, pieceToEatCoordinates)
-        board.placePiece(pieceInTheWay, pieceInTheWayCoordinates)
+        Mockito.doReturn(myKing).`when`(board)[myCoordinate]
+        Mockito.doReturn(enemyPiece).`when`(board)[Coordinate(4, 5)]
+        Mockito.doReturn(enemyPiece).`when`(board)[Coordinate(3, 4)]
+        Mockito.doReturn(null).`when`(board)[landingCoordinate]
 
-        Mockito.doReturn(eatingPieceCoordinates).`when`(spyStepSequence).currentCoordinates
-        Mockito.doReturn(board).`when`(spyStepSequence).resultBoard
+        val piecesInRange = listOf(enemyPiece, enemyPiece)
 
-        val result = spyStepSequence.canEat(StepDirection.DOWN_RIGHT, landingPlace)
+        val result = myKing.canEat(landingCoordinate, board, piecesInRange)
 
         assertFalse(result)
     }
@@ -283,62 +212,17 @@ internal class CanEatTest {
      */
     @Test
     fun canEat_king_landingPlaceTaken_no() {
-        val eatingPiece = friendlyKing
-        val pieceToEat = enemyPiece
-        val pieceInLandingPlace = friendlyPiece
-        val eatingPieceCoordinates = Coordinates(1, 2)
-        val pieceToEatCoordinates = Coordinates(3,4)
-        val landingCoordinates = Coordinates(4, 5)
+        val landingCoordinate = Coordinate(5, 6)
+        val nextCoordinate = Coordinate(4, 5)
+        val myCoordinate = Coordinate(1, 2)
 
-        board.placePiece(eatingPiece, eatingPieceCoordinates)
-        board.placePiece(pieceToEat, pieceToEatCoordinates)
-        board.placePiece(pieceInLandingPlace, landingCoordinates)
+        Mockito.doReturn(myKing).`when`(board)[myCoordinate]
+        Mockito.doReturn(enemyPiece).`when`(board)[nextCoordinate]
+        Mockito.doReturn(friendlyPiece).`when`(board)[landingCoordinate]
 
-        Mockito.doReturn(eatingPieceCoordinates).`when`(spyStepSequence).currentCoordinates
-        Mockito.doReturn(board).`when`(spyStepSequence).resultBoard
+        val piecesInRange = listOf(enemyPiece)
 
-        val result = spyStepSequence.canEat(StepDirection.DOWN_RIGHT, landingCoordinates)
-
-        assertFalse(result)
-    }
-
-    /**
-     * check if king piece can eat in direction that leads outside the board.
-     * EXPECTATION: no
-     */
-    @Test
-    fun canEat_king_eatingPlaceOutOfBoard_no() {
-        val eatingPiece = friendlyKing
-        val eatingPieceCoordinates = Coordinates(0, 1)
-
-        board.placePiece(eatingPiece, eatingPieceCoordinates)
-
-        Mockito.doReturn(eatingPieceCoordinates).`when`(spyStepSequence).currentCoordinates
-        Mockito.doReturn(board).`when`(spyStepSequence).resultBoard
-
-        val result = spyStepSequence.canEat(StepDirection.UP_LEFT)
-
-        assertFalse(result)
-    }
-
-    /**
-     * check if king piece can eat enemy piece when the landing place is outside the board.
-     * EXPECTATION: no
-     */
-    @Test
-    fun canEat_king_landingPlaceOutOfBoard_no() {
-        val eatingPiece = friendlyKing
-        val pieceToEat = enemyPiece
-        val eatingPieceCoordinates = Coordinates(1, 2)
-        val pieceToEatCoordinates = Coordinates(0, 1)
-
-        board.placePiece(eatingPiece, eatingPieceCoordinates)
-        board.placePiece(pieceToEat, pieceToEatCoordinates)
-
-        Mockito.doReturn(eatingPieceCoordinates).`when`(spyStepSequence).currentCoordinates
-        Mockito.doReturn(board).`when`(spyStepSequence).resultBoard
-
-        val result = spyStepSequence.canEat(StepDirection.UP_LEFT)
+        val result = myKing.canEat(landingCoordinate, board, piecesInRange)
 
         assertFalse(result)
     }
