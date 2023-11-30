@@ -1,4 +1,4 @@
-package com.checkers.models
+package com.checkers.checkers
 
 class Turn(private val steps: List<Step>) : Cloneable {
     val boardAfterTurn: Board = steps.last().boardAfterMove

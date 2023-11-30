@@ -1,6 +1,6 @@
-package com.checkers.models
+package com.checkers.checkers
 
-import com.checkers.models.piece.Pawn
+import com.checkers.checkers.piece.Pawn
 
 class Game {
 

@@ -1,4 +1,4 @@
-package com.checkers.models
+package com.checkers.checkers
 
 enum class PieceColor(
     val startingRows: List<Int>,

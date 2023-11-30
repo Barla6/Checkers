@@ -1,6 +1,6 @@
-package com.checkers.models.piece
+package com.checkers.checkers.piece
 
-import com.checkers.models.*
+import com.checkers.checkers.*
 import com.checkers.utlis.blueString
 import com.checkers.utlis.redString
 
@@ -20,23 +20,20 @@ class King(pieceColor: PieceColor) : Piece(pieceColor) {
 
     override fun possibleImmediateSteps(board: Board, from: Coordinate, hasEaten: Boolean): List<Step> {
         return getDirections().flatMap { direction ->
-            val coordinateLine = from.getAllCoordinatesInDirection(direction)
-            var canGoFurther: Boolean
+            val coordinateLine = from.coordinatesInDirection(direction)
             coordinateLine.mapNotNull { landingCoordinate ->
 
-                val piecesInRange = board.piecesInRange(Coordinate.between(from, landingCoordinate))
-
-                canGoFurther = board[landingCoordinate]?.pieceColor != pieceColor || piecesInRange.size > 1
-                if (!canGoFurther) return@mapNotNull null
+                val canSimpleStep = canSimpleStep(from, landingCoordinate, board)
+                val canEat = canEat(from, landingCoordinate, board)
 
                 when {
-                    !hasEaten && canSimpleStep(landingCoordinate, board, piecesInRange) -> Step(
+                    !hasEaten && canSimpleStep -> Step(
                         from = from,
                         to = landingCoordinate,
                         boardAfterMove = board.clone().apply { executeStep(from, landingCoordinate) },
                         hasEaten = false
                     )
-                    canEat(landingCoordinate, board, piecesInRange) -> Step(
+                    canEat -> Step(
                         from = from,
                         to = landingCoordinate,
                         boardAfterMove = board.clone().apply { executeStep(from, landingCoordinate) },
@@ -48,15 +45,28 @@ class King(pieceColor: PieceColor) : Piece(pieceColor) {
         }
     }
 
-    fun canSimpleStep(landingCoordinate: Coordinate, board: Board, piecesInRange: List<Piece>): Boolean {
+    fun canSimpleStep(from:Coordinate, landingCoordinate: Coordinate, board: Board): Boolean {
+        val coordinatesBetween = Coordinate.between(from, landingCoordinate).getOrNull()!!
+        val piecesInRange = board.piecesInRange(coordinatesBetween)
         val canLand = board[landingCoordinate] == null
         val noPiecesInRange = piecesInRange.isEmpty()
         return canLand && noPiecesInRange
     }
 
-    private fun canEat(landingCoordinate: Coordinate, board: Board, piecesInRange: List<Piece>): Boolean {
+    fun canEat(from: Coordinate, landingCoordinate: Coordinate, board: Board): Boolean {
+        val coordinatesBetween = Coordinate.between(from, landingCoordinate).getOrNull()!!
+        val piecesInRange = board.piecesInRange(coordinatesBetween)
         val enemyExistsInRange = piecesInRange.size == 1 && piecesInRange.single().enemyOf(this)
         val canLand = board[landingCoordinate] == null
         return canLand && enemyExistsInRange
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (other !is King) return false
+        return pieceColor == other.pieceColor
+    }
+
+    override fun hashCode(): Int {
+        return javaClass.hashCode()
     }
 }

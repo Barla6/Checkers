@@ -1,6 +1,6 @@
-package com.checkers.models.piece
+package com.checkers.checkers.piece
 
-import com.checkers.models.*
+import com.checkers.checkers.*
 import java.util.*
 
 sealed class Piece(val pieceColor: PieceColor): Cloneable {
@@ -13,6 +13,7 @@ sealed class Piece(val pieceColor: PieceColor): Cloneable {
     fun possibleMoves(board: Board, from: Coordinate): List<Turn> {
         val completed = mutableListOf<Turn>()
         val inProgress = Stack<Turn>()
+
         possibleImmediateSteps(board, from, false)
             .map { Turn(listOf(it)) }
             .forEach { inProgress.push(it) }

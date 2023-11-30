@@ -1,4 +1,4 @@
-package com.checkers.models
+package com.checkers.checkers
 
 typealias Tiles = List<List<Tile>>
 

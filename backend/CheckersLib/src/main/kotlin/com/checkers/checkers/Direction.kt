@@ -1,5 +1,6 @@
-package com.checkers.models
+package com.checkers.checkers
 
+import com.checkers.checkers.errors.NoValidDirection
 import kotlin.math.abs
 import kotlin.math.sign
 
@@ -16,16 +17,17 @@ enum class Direction(private val direction: Pair<Int, Int>) {
         get() = this.direction.second
 
     companion object {
-        fun getDirection(from: Coordinate, to: Coordinate): Direction? {
+        fun get(from: Coordinate, to: Coordinate): Result<Direction> = runCatching {
             val rowDirection = to.row - from.row
             val colDirection = to.col - from.col
 
-            if (abs(rowDirection) != abs(colDirection)) return null
+            if (abs(rowDirection) != abs(colDirection)) throw NoValidDirection("from: $from to: $to")
 
-            return values().find { direction ->
+            values().find { direction ->
                 direction.rowDirection == rowDirection.sign &&
                         direction.colDirection == colDirection.sign
-            }
+            }!!
+
         }
     }
 }
